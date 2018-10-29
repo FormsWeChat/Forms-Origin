@@ -1,8 +1,8 @@
-.log-list {
+.scroll-x {
   display: flex;
-  flex-direction: column;
-  padding: 40rpx;
+  flex-direction: row; 
 }
-.log-item {
-  margin: 10rpx;
+.img{
+  width: 450rpx;
+  height: 450rpx;
 }

@@ -1,6 +1,16 @@
-<!--logs.wxml-->
-<view class="container log-list">
-  <block wx:for="{{logs}}" wx:for-item="log">
-    <text class="log-item">{{index + 1}}. {{log}}</text>
-  </block>
+<template name="staffName">
+  <view>
+    <image style="width: 200px; height: 200px; background-color: #eeeeee;" src="{{src}}"></image>
+  </view>
+  <view>
+    FirstName: {{firstName}}, LastName: {{lastName}}
+  </view>
+</template>
+
+<scroll-view scroll-x="true" style="width: 100%">
+<view class="scroll-x">
+  <view wx:for="{{cats}}" wx:key="cats{{index}}" >
+    <template is="staffName" data="{{...item}}"></template>
+  </view>
 </view>
+</scroll-view>
