@@ -15,14 +15,12 @@
 }
 
 .input-title-container {
-  border: 1px solid #c4bdbd;
-  border-radius: 5px;
-  padding-left: 10px;
+  padding-left: 5px;
 }
 
 .input-title{
-  font-size: 15px;
-  height: 50px;
+  font-size: 20px;
+  height: 40px;
 }
 
 .suggest-title {
@@ -48,23 +46,24 @@
   height: 1px;
   background-color: #c4bdbd;
   width: 80%;
-  margin-top: 10px;
+  margin-top: 5px;
+  margin-left: 10%;
 }
 
 .option {
   padding-top: 25px;
   width: 80%;
-  padding-left: calc(10% + 10px);
+  padding-left: calc(10% + 5px);
 }
 
 .option-input {
-  font-size: 15px;
+  font-size: 13px;
 }
 
 .add-options-button {
   padding-top: 10px;
   text-align: left;
-  padding-left: calc(10% + 10px);
+  padding-left: calc(10% + 5px);
   border: none;
   background-color: #ffffff;
   color:#008272;

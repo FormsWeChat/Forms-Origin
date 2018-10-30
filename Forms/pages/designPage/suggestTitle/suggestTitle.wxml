@@ -4,7 +4,7 @@
 {{title}}</button>
 </template>
 
-<text class="suggest-title-text">Recent questions</text>
+<text class="suggest-title-text">Suggested questions</text>
 <view wx:for="{{suggestTitle}}" wx:key="{{suggestTitle}}">
   <template is="title-suggest" data="{{...item}}"></template>
 </view>
