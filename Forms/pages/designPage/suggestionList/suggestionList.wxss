@@ -1,0 +1,8 @@
+.item-suggest-button {
+  margin-top: 5px;
+}
+
+.itemImage {
+  width: 50rpx;
+  height: 50rpx;
+}

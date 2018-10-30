@@ -1,22 +1,30 @@
 <view class="list-container">
   <template name="item-suggest">
-    <button class="item-suggest-button" bindtap='onSuggestButton' id="{{title}}">
-      {{title}}
-    </button>
+    <view class="item-suggest-button" bindtap='onSuggestButton' id="{{title}}">
+    <image class="itemImage" src="../../images/star.png" mode="aspectFill"/>
+    <view class="meta">
+      <text class="title">{{title}}</text>
+    </view>
+    </view>
   </template>
 </view>
 
-<view wx:for="{{restaurants}}" wx:key="{{restaurants}}">
-  <template is="item-suggest" data="{{...item}}"> </template>
-</view>
-<view class="tips">
-  <view wx:if="{{ hasMore }}">
-    <image src="/images/loading.gif" mode="aspectFill" />
-    <text>Loading...</text>
+<view class="suggestionContainer">
+  <text class="title"> Suggested options</text>
+  <block/>
+  <view wx:for="{{restaurants}}" wx:key="{{restaurants}}">
+    <template is="item-suggest" data="{{...item}}"> </template>
   </view>
-  <view wx:else>
-    <text>No More</text>
+  <view class="tips">
+    <view wx:if="{{ hasMore }}">
+      <image src="/images/loading.gif" mode="aspectFill" />
+      <text>Loading...</text>
+    </view>
+    <view wx:else>
+      <text>No More</text>
+    </view>
   </view>
 </view>
 
 <loading hidden="{{ !loading }}">Loading...</loading>
+
