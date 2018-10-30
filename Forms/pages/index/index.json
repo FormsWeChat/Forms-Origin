@@ -1,1 +1,5 @@
-{}
+{
+  "usingComponents": {
+    "suggestionList": "../designPage/suggestionList/suggestionList"
+  }
+}

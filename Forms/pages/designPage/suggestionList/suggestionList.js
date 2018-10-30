@@ -1,6 +1,4 @@
-var app = getApp();
-
-Page({
+Component({
   data: {
     title: '',
     subtitle: '加载中...',
@@ -56,4 +54,4 @@ Page({
   onReachBottom: function onReachBottom() {
     this.loadMore();
   }
-});
+})
