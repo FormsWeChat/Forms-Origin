@@ -2,8 +2,7 @@
   "pages": [
     "pages/index/index",
     "pages/logs/logs",
-    "pages/designPage/designPage",
-    "pages/designPage/suggestionList/suggestionList"
+    "pages/designPage/designPage"
   ],
 
   "window":{

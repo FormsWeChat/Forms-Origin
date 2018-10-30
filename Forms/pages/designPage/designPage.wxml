@@ -1,29 +1,36 @@
-<view class="intro">约会小助手</view>
-<view class="page-body">
-  <view class="page-section">
-    <text class="title">"中关村”附近的“湘菜”饭馆有：</text>
-    <radio-group class="radio-group" data-id="{{item.id}}">
-      <label class="radio">
-        <radio value="a#{{item.optiona}}" checked/>
-        <text>A{{item.optiona}}</text>
-      </label>
-      <label class="radio">
-        <radio value="b#{{item.optionb}}" />
-        <text>B{{item.optionb}}</text>
-      </label>
-      <label class="radio">
-        <radio value="c#{{item.optionc}}" />
-        <text>C{{item.optionc}}</text>
-      </label>
-      <label class="radio">
-        <radio value="d#{{item.optiond}}" />
-        <text>D{{item.optiond}}</text>
-      </label>
-    </radio-group>
-    <label class="addMore">
-    <input class="inputMore" placeholder='添加更多选项'></input>
-    <button class="add">添加</button>
-    </label>
-    <button class="share" bindtouchend='shareForm' open-type='share'>分享</button>
+<!--index.wxml-->
+<template name="title-suggest">
+<button class="title-suggest-button" bindtap='onSuggestButton' hover-class="title-suggest-button-hover" id="{{title}}">
+{{title}}</button>
+</template>
+
+<template name="option-item">
+  <view class="option">
+    <input class="option-input" placeholder='{{Text}}'/>
+    <view class="div-line"/>
+  </view>
+</template>
+
+<view class="container">
+  <view class="title-container">
+    <view class="input-title-container">
+      <input wx:if="{{Title == ''}}"class="input-title" placeholder='Type your title'/>
+      <input wx:else class="input-title" value='{{Title}}'> </input>
     </view>
   </view>
+
+  <view class="options-container">
+    <template wx:for="{{Options}}" wx:key="Options{{Text}}" is="option-item" data="{{...item}}"></template>
+    <button class="add-options-button" bindtap='onAddOptionsButton' id="{{}}">Add options
+    </button>
+  </view>
+
+  
+
+  <view wx:if="{{showBottom == 'title'}}"class="suggest-title footer">
+    <text class="suggest-title-text">Recent questions</text>
+    <view wx:for="{{suggestTitle}}" wx:key="{{suggestTitle}}">
+      <template is="title-suggest" data="{{...item}}"></template>
+    </view>
+  </view>
+</view>

@@ -2,23 +2,35 @@ Page({
   data: {
     filters: [],
     loading: true,
+    Title: "",
+    suggestTitle: [
+      { title: "Where to eat" },
+      { title: "What movies" },
+      { title: "KTV" }
+    ],
+    Options: [
+      { Text: "Option1", Card: false, DoneInput: false }
+    ],
+    showBottom: "title",
   },
-
-  onLoad: function () {
-   /* wx.showLoading({ title: '拼命加载中...' })
-    const tasks = this.data.boards.map(board => {
-      return app.douban.find(board.key, 1, 8)
-        .then(d => {
-          board.title = d.title
-          board.movies = d.subjects
-          return board
-        })
+  //事件处理函数
+  onSuggestButton: function (e) {
+    this.setData({
+      Title: e.target.id,
+      showBottom: "suggestion"
+    });
+    wx.navigateTo({
+      url: '../designPage/suggestionList/suggestionList',
     })
-
-    Promise.all(tasks).then(boards => {
-      this.setData({ boards: boards, loading: false })
-      wx.hideLoading()
-    })*/
+  },
+  onAddOptionsButton: function (e) {
+    let newOptions = this.data.Options;
+    newOptions.push({ Text: "Option" + (newOptions.length + 1), Card: false, DoneInput: false })
+    this.setData({
+      Options: newOptions
+    })
+  },
+  onLoad: function () {
   },
 
   onShareAppMessage: function onShareAppMessage() {
