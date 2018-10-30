@@ -1,40 +1,13 @@
 <!--index.wxml-->
-<template name="title-suggest">
-  <button class="title-suggest-button" bindtap='onSuggestButton' hover-class="title-suggest-button-hover" id="{{title}}">
-    {{title}}</button>
-</template>
-
-<template name="option-item">
-  <view class="option">
-    <input class="option-input" placeholder='{{Text}}' />
-    <view class="div-line" />
-  </view>
-</template>
-
 <view class="container">
-  <view class="title-container">
-    <view class="input-title-container">
-      <input wx:if="{{Title == ''}}" class="input-title" placeholder='Type your title' />
-      <input wx:else class="input-title" value='{{Title}}'> </input>
-    </view>
+  <view class="userinfo">
+    <text wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 正在获取您的个人信息 </text>
+    <block wx:else>
+      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+    </block>
   </view>
-
-  <view class="options-container">
-    <template wx:for="{{Options}}" wx:key="Options{{Text}}" is="option-item" data="{{...item}}"></template>
-    <button class="add-options-button" bindtap='onAddOptionsButton' id="{{}}">Add options
-    </button>
-  </view>
-
-
-  <view wx:if="{{showBottom == 'title'}}"class="suggest-title footer">
-    <text class="suggest-title-text">Recent questions</text>
-    <view wx:for="{{suggestTitle}}" wx:key="{{suggestTitle}}">
-      <template is="title-suggest" data="{{...item}}"></template>
-    </view>
-  </view>
-
-  <view wx:if="{{showBottom == 'suggestion'}}">
-    <suggestion-List>
-    </suggestion-List>
+  <view class="usermotto">
+    <button class="user-motto" bindtap="onClickStart">进入Forms</button>
   </view>
 </view>

@@ -25,4 +25,6 @@
     </view>
   </view>
 </view>
+
 <loading hidden="{{ !loading }}">Loading...</loading>
+
