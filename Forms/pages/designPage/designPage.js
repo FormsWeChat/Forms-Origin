@@ -19,9 +19,6 @@ Page({
       Title: e.target.id,
       showBottom: "suggestion"
     });
-    wx.navigateTo({
-      url: '../designPage/suggestionList/suggestionList',
-    })
   },
   onAddOptionsButton: function (e) {
     let newOptions = this.data.Options;

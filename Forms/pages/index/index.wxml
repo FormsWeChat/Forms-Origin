@@ -10,6 +10,4 @@
   <view class="usermotto">
     <button class="user-motto" bindtap="onClickStart">进入Forms</button>
   </view>
-
-
 </view>
