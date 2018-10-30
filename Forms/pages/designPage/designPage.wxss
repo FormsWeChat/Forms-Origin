@@ -1,0 +1,26 @@
+/* pages/designPage/designPage.wxss */
+.intro {
+  margin: 30px;
+  text-align: center;
+}
+
+.title {
+  margin-left: 5px;
+}
+
+.radio {
+  display: block;
+  margin-left: 5px;
+}
+
+.addMore {
+  display: inline;
+}
+
+.add {
+  display: inline;
+}
+
+.share {
+  width: 100px;
+}
