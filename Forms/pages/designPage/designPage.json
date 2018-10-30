@@ -1,5 +1,6 @@
 {
     "usingComponents": {
-      "suggestion-List": "suggestionList/suggestionList"
+      "suggestion-List": "suggestionList/suggestionList",
+      "suggest-Title": "suggestTitle/suggestTitle"
     }
 }

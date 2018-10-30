@@ -71,10 +71,6 @@ Component({
     },
 
     onSuggestButton: function (e) {
-      this.setData({
-        Title: e.target.id,
-        showSuggestion: true
-      });
       var myEventDetail = { msg: e } // detail对象，提供给事件监听函数
       var myEventOption = {} // 触发事件的选项
       this.triggerEvent('myevent', myEventDetail, myEventOption)
