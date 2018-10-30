@@ -32,28 +32,6 @@
   height: 400px;
 }
 
-.suggest-title-text {
-  display: inline-block;
-  padding-top: 50px;
-  padding-left: 15%;
-  width: 70%;
-  font-size: 15px;
-  color: #c4bdbd;
-}
-
-.title-suggest-button {
-  font-size: 15px;
-  width: 70%;
-  margin-top: 20px;
-  border:1px solid #008272;
-  color: #008272;
-}
-
-.title-suggest-button-hover { 
-    background-color: #008272;
-    color: #ffffff;
-}
-
 .footer {
   position: absolute;
   bottom: 0px;

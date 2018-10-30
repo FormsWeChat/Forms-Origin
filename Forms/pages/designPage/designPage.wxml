@@ -1,8 +1,5 @@
 <!--index.wxml-->
-<template name="title-suggest">
-<button class="title-suggest-button" bindtap='onSuggestButton' hover-class="title-suggest-button-hover" id="{{title}}">
-{{title}}</button>
-</template>
+
 
 <template name="option-item">
   <view class="option">
@@ -27,13 +24,10 @@
 
   <view class="suggest-title footer">
     <view wx:if="{{showBottom == 'title'}}">
-      <text class="suggest-title-text">Recent questions</text>
-      <view wx:for="{{suggestTitle}}" wx:key="{{suggestTitle}}">
-        <template is="title-suggest" data="{{...item}}"></template>
-      </view>
+      <suggest-Title bindmyevent="onClickSuggestionTitle"/>
     </view>
     <view wx:if="{{showBottom == 'suggestion'}}">
-      <suggestion-List>
+      <suggestion-List bindmyevent="onClickSuggestionCard">
       </suggestion-List>
     </view>
   </view>
