@@ -50,5 +50,11 @@ Page({
       userInfo: e.detail.userInfo,
       hasUserInfo: true
     })
+  },
+  bindTouchEnd: function(e) {
+    console.log(e)
+    wx.navigateTo({
+      url: '../designPage/designPage'
+    })
   }
 })
