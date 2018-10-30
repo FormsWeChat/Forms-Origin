@@ -1,8 +1,17 @@
 .scroll-x {
   display: flex;
-  flex-direction: row; 
 }
-.img{
-  width: 450rpx;
-  height: 450rpx;
+
+.img {
+  width: 150rpx;
+  height: 150rpx;
+  display: inline-block;
+}
+
+.img-background {
+  align-items: center;
+  width: 200px; 
+  margin: 10px;
+  height: 200px; 
+  background-color: #eeeeee;
 }
