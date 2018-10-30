@@ -4,15 +4,29 @@ const app = getApp()
 
 Page({
   data: {
-    motto: 'Hello World',
-    userInfo: {},
-    hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo')
+    Title:"",
+    suggestTitle:[
+      {title: "Where to eat"},
+      {title: "What movies"},
+      {title: "KTV"}
+    ],
+    Options:[
+      {Text: "Option1", Card: false, DoneInput: false}
+    ],
+    showSuggestion: false,
   },
   //事件处理函数
-  bindViewTap: function() {
-    wx.navigateTo({
-      url: '../logs/logs'
+  onSuggestButton: function(e) {
+    this.setData({
+      Title: e.target.id,
+      showSuggestion: true
+    });
+  },
+  onAddOptionsButton: function (e) {
+    let newOptions = this.data.Options;
+    newOptions.push({ Text: "Option" + (newOptions.length + 1), Card: false, DoneInput: false })
+    this.setData({
+      Options: newOptions
     })
   },
   onLoad: function () {
