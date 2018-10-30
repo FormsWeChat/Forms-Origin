@@ -13,14 +13,14 @@ Page({
     Options:[
       {Text: "Option1", Card: false, DoneInput: false}
     ],
-    showSuggestion: false,
+    showBottom: "title",
   },
   //事件处理函数
   onSuggestButton: function(e) {
-    // this.setData({
-    //   Title: e.target.id,
-    //   showSuggestion: true
-    // });
+    this.setData({
+      Title: e.target.id,
+      showBottom: "suggestion"
+    });
     wx.navigateTo({
       url: '../designPage/suggestionList/suggestionList',
     })
