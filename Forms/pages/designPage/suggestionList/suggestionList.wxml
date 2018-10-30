@@ -1,5 +1,4 @@
-<template name="suggestion-list">
-  <view class="list" data="{{item}}" wx:for="{{restarant}}" wx:key="id">
+ <view class="list" data="{{item}}" wx:for="{{restarant}}" wx:key="id">
     <view class="tips">
       <view class="item" bindtouchend='confirmSuggesxtion'>
         <image class="poster" src="{{ item.images.small }}" />
@@ -24,4 +23,3 @@
     </view>
   </view>
   <loading hidden="{{ !loading }}">Loading...</loading>
-</template>

@@ -17,10 +17,13 @@ Page({
   },
   //事件处理函数
   onSuggestButton: function(e) {
-    this.setData({
-      Title: e.target.id,
-      showSuggestion: true
-    });
+    // this.setData({
+    //   Title: e.target.id,
+    //   showSuggestion: true
+    // });
+    wx.navigateTo({
+      url: '../designPage/suggestionList/suggestionList',
+    })
   },
   onAddOptionsButton: function (e) {
     let newOptions = this.data.Options;
