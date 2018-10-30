@@ -32,6 +32,28 @@
   height: 400px;
 }
 
+.suggest-title-text {
+  display: inline-block;
+  padding-top: 50px;
+  padding-left: 15%;
+  width: 70%;
+  font-size: 15px;
+  color: #c4bdbd;
+}
+
+.title-suggest-button {
+  font-size: 15px;
+  width: 70%;
+  margin-top: 20px;
+  border:1px solid #008272;
+  color: #008272;
+}
+
+.title-suggest-button-hover { 
+    background-color: #008272;
+    color: #ffffff;
+}
+
 .footer {
   position: absolute;
   bottom: 0px;
@@ -51,7 +73,7 @@
   margin-top: 10px;
 }
 
-.option {
+.option-text {
   padding-top: 25px;
   width: 80%;
   padding-left: calc(10% + 10px);
@@ -61,6 +83,21 @@
   font-size: 15px;
 }
 
+.option-card {
+  padding-top: 25px;
+  width: 80%;
+  height: 100px;
+  padding-left: calc(10% + 10px);
+}
+
+.option-img {
+  width: 100px;
+  height: 100px;
+}
+
+.Title {
+  font-size: 15px;
+}
 .add-options-button {
   padding-top: 10px;
   text-align: left;

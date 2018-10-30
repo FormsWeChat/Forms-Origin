@@ -2,9 +2,15 @@
 
 
 <template name="option-item">
-  <view class="option">
-    <input class="option-input" placeholder='{{Text}}'/>
+  <view wx:if="{{!Card}}"class="option-text">
+    <input class="option-input" placeholder='{{Title}}'/>
     <view class="div-line"/>
+  </view>
+
+  <view wx:else class="option-card">
+    <image class="option-img" src='{{image}}'/>
+    <text class="Title">{{Title}}</text>
+    <text class="KouWei">{{kouwei}}</text>
   </view>
 </template>
 
@@ -17,7 +23,7 @@
   </view>
 
   <view class="options-container">
-    <template wx:for="{{Options}}" wx:key="Options{{Text}}" is="option-item" data="{{...item}}"></template>
+    <template wx:for="{{Options}}" wx:key="Options{{Title}}" is="option-item" data="{{...item}}"></template>
     <button class="add-options-button" bindtap='onAddOptionsButton' id="{{}}">Add options
     </button>
   </view>
