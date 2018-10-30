@@ -33,7 +33,7 @@
       </view>
     </view>
     <view wx:if="{{showBottom == 'suggestion'}}">
-      <suggestion-List>
+      <suggestion-List bindmyevent="onClickSuggestion">
       </suggestion-List>
     </view>
   </view>

@@ -20,6 +20,7 @@ Page({
       showBottom: "suggestion"
     });
   },
+  
   onAddOptionsButton: function (e) {
     let newOptions = this.data.Options;
     newOptions.push({ Text: "Option" + (newOptions.length + 1), Card: false, DoneInput: false })
@@ -27,6 +28,11 @@ Page({
       Options: newOptions
     })
   },
+
+  onClickSuggestion: function (e) {
+    console.log(e.detail.msg);
+  },
+
   onLoad: function () {
   },
 
