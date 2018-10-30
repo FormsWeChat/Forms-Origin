@@ -12,9 +12,9 @@ Component({
    */
   data: {
     suggestTitle: [
-      { title: "Where to eat" },
-      { title: "What movies" },
-      { title: "KTV" }
+      { title: "Where should we eat?" },
+      { title: "Which movie we want to see?" },
+      { title: "Where do we want to meet?" }
     ],
   },
 
