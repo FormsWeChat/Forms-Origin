@@ -68,10 +68,13 @@ Page({
       hasUserInfo: true
     })
   },
-  bindTouchEnd: function(e) {
+  
+  onShareAppMessage: function onShareAppMessage() {
+
+  },
+
+  shareForm: function (e) {
     console.log(e)
-    wx.navigateTo({
-      url: '../designPage/designPage'
-    })
-  }
+    Page.onshareAppMessage
+  },
 })
