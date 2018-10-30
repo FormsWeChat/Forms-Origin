@@ -1,20 +1,20 @@
 <!--index.wxml-->
 <template name="title-suggest">
-<button class="title-suggest-button" bindtap='onSuggestButton' hover-class="title-suggest-button-hover" id="{{title}}">
-{{title}}</button>
+  <button class="title-suggest-button" bindtap='onSuggestButton' hover-class="title-suggest-button-hover" id="{{title}}">
+    {{title}}</button>
 </template>
 
 <template name="option-item">
   <view class="option">
-    <input class="option-input" placeholder='{{Text}}'/>
-    <view class="div-line"/>
+    <input class="option-input" placeholder='{{Text}}' />
+    <view class="div-line" />
   </view>
 </template>
 
 <view class="container">
   <view class="title-container">
     <view class="input-title-container">
-      <input wx:if="{{Title == ''}}"class="input-title" placeholder='Type your title'/>
+      <input wx:if="{{Title == ''}}" class="input-title" placeholder='Type your title' />
       <input wx:else class="input-title" value='{{Title}}'> </input>
     </view>
   </view>
@@ -25,12 +25,17 @@
     </button>
   </view>
 
-  
 
-  <view wx:if="{{!showSuggestion}}"class="suggest-title footer">
+
+  <view wx:if="{{!showSuggestion}}" class="suggest-title footer">
     <text class="suggest-title-text">Recent questions</text>
     <view wx:for="{{suggestTitle}}" wx:key="{{suggestTitle}}">
       <template is="title-suggest" data="{{...item}}"></template>
     </view>
+  </view>
+
+  <view wx:elif="{{showSuggestion}}">
+    <suggestion-List>
+    </suggestion-List>
   </view>
 </view>
