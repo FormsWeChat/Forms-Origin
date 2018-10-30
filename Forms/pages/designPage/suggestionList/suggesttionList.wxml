@@ -1,0 +1,27 @@
+<template name="suggestion-list">
+  <view class="list" data="{{item}}" wx:for="{{restarant}}" wx:key="id">
+    <view class="tips">
+      <view class="item" bindtouchend='confirmSuggesxtion'>
+        <image class="poster" src="{{ item.images.small }}" />
+        <view class="meta">
+          <text class="title">{{ item.title }}</text>
+          <text class="distance">{{ item.original_title }} ({{ item.year }})</text>
+          <view class="artists">：
+            <block wx:for="{{ item.directors }}" wx:key="id"> {{ item.name }} </block>
+          </view>
+        </view>
+        <view class="rating">
+          <text>{{ item.rating.average }}</text>
+        </view>
+      </view>
+      <view wx:if="{{ hasMore }}">
+        <image src="/images/loading.gif" mode="aspectFill" />
+        <text>Loading...</text>
+      </view>
+      <view wx:else>
+        <text>No More</text>
+      </view>
+    </view>
+  </view>
+  <loading hidden="{{ !loading }}">Loading...</loading>
+</template>
