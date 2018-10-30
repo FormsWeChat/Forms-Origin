@@ -26,15 +26,14 @@
   </view>
 
 
-
-  <view wx:if="{{!showSuggestion}}" class="suggest-title footer">
+  <view wx:if="{{showBottom == 'title'}}"class="suggest-title footer">
     <text class="suggest-title-text">Recent questions</text>
     <view wx:for="{{suggestTitle}}" wx:key="{{suggestTitle}}">
       <template is="title-suggest" data="{{...item}}"></template>
     </view>
   </view>
 
-  <view wx:elif="{{showSuggestion}}">
+  <view wx:if="{{showBottom == 'suggestion'}}">
     <suggestion-List>
     </suggestion-List>
   </view>

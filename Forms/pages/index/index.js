@@ -13,17 +13,17 @@ Page({
     Options:[
       {Text: "Option1", Card: false, DoneInput: false}
     ],
-    showSuggestion: false,
+    showBottom: "title",
   },
   //事件处理函数
   onSuggestButton: function(e) {
     this.setData({
       Title: e.target.id,
-      showSuggestion: true
+      showBottom: "suggestion"
     });
-    // wx.navigateTo({
-    //   url: '../designPage/suggestionList/suggestionList',
-    // })
+    wx.navigateTo({
+      url: '../designPage/suggestionList/suggestionList',
+    })
   },
   onAddOptionsButton: function (e) {
     let newOptions = this.data.Options;
