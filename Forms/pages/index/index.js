@@ -13,17 +13,20 @@ Page({
     Options:[
       {Text: "Option1", Card: false, DoneInput: false}
     ],
-    showSuggestion: false,
+    orderByRating:[
+      { Name: "口味" },
+      { Name: "环境" },
+      { Name: "服务"},
+    ],
+    showBottom: "title",
   },
   //事件处理函数
   onSuggestButton: function(e) {
-    // this.setData({
-    //   Title: e.target.id,
-    //   showSuggestion: true
-    // });
-    wx.navigateTo({
-      url: '../designPage/suggestionList/suggestionList',
-    })
+    this.setData({
+      Title: e.target.id,
+      showBottom: "suggestion"
+    });
+    
   },
   onAddOptionsButton: function (e) {
     let newOptions = this.data.Options;
@@ -33,6 +36,9 @@ Page({
     })
   },
   onLoad: function () {
+    wx.navigateTo({
+      url: '../runtimePage/runtimePage',
+    })
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,

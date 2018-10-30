@@ -96,3 +96,32 @@
 .add-options-button::after {
   border: none;
 }
+.filterGroup {
+  display: inline-block;
+  align-items: center;
+  width: 100%;
+}
+.ratingButtonGroup {
+  padding-left: 5%;
+  padding-top: 30px;
+  display: flex;
+  width: 90%
+}
+
+.rating-button {
+  background-color: #008272;
+  color:#ffffff;
+  width: 25%;
+}
+
+.slider-container {
+  padding-left: 5%;
+  padding-top: 30px;
+  display: inline-block;
+  width: 90%
+}
+
+.slider {
+  position: absolute;
+  width: 300px;
+}

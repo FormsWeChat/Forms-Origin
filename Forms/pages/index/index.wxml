@@ -11,6 +11,11 @@
   </view>
 </template>
 
+<template name="rating-button">
+  <button class="rating-button" bindtap='onRatingButton' hover-class="rating-button-hover" id="{{title}}">
+  {{Name}}</button>
+</template>
+
 <view class="container">
   <view class="title-container">
     <view class="input-title-container">
@@ -24,13 +29,30 @@
     <button class="add-options-button" bindtap='onAddOptionsButton' id="{{}}">Add options
     </button>
   </view>
-
   
+  <view class="suggest-title footer">
+    <view wx:if="{{showBottom == 'title'}}">
+      <text class="suggest-title-text">Recent questions</text>
+      <view wx:for="{{suggestTitle}}" wx:key="{{suggestTitle}}">
+        <template is="title-suggest" data="{{...item}}"></template>
+      </view>
+    </view>
 
-  <view wx:if="{{!showSuggestion}}"class="suggest-title footer">
-    <text class="suggest-title-text">Recent questions</text>
-    <view wx:for="{{suggestTitle}}" wx:key="{{suggestTitle}}">
-      <template is="title-suggest" data="{{...item}}"></template>
+    <view wx:elif="{{showBottom == 'filter'}}" class="filterGroup">
+      <view class="ratingButtonGroup">
+        <template wx:for="{{orderByRating}}" wx:key="orderByRating{{Name}}" is="rating-button" data="{{...item}}"></template>
+      </view>
+      <view class="slider-container">
+      <text>价格区间</text>
+      <slider class="slider" bindchangeing="sliderMinChange" min="0" max="500"  
+      activeColor="#ababab" backgroundColor="#008200"/>
+      <slider class="slider" bindchangeing="sliderMaxChange" min="0" max="500"  value="500"
+      activeColor="#008200" backgroundColor="#ababab"/>
+      </view>
+    </view>
+
+    <view wx:elif="{{showBottom == 'suggestion'}}">
+    <text>Suggestion</text>
     </view>
   </view>
 </view>
