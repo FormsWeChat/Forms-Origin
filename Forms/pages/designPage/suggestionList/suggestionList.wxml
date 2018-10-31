@@ -5,10 +5,8 @@
     <image class="itemImage" src="/../../images/cat.jpg" mode="aspectFill" />
     <view class="detail">
       <text class="title">{{title}}</text>
-      <view wx:if='{{rating>0}}'>
-        <template is='rating' data='{{rating}}'></template>
-      </view>
-      <text class="comments"><block>{{comments}} "items"</block></text>
+      <template is='rating' data='{{rating:7.3,max:10}}'></template>
+      <text class="comments"><block>{{comments}} items</block></text>
       <text class="price"><block> {{price}} </block></text>
     </view>
   </view>
@@ -19,6 +17,7 @@
     <text class="title"> Suggested options</text>
     <button class="filterButton" bindtap='onFilter'>Filter</button>
   </view>
+
   <view wx:for="{{restaurants}}" wx:key="{{restaurants}}" class="list-container">
     <template is="item-suggest" data="{{...item}}"> </template>
   </view>

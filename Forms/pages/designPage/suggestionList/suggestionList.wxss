@@ -24,15 +24,19 @@
   display: flex;
   align-items: center;
   font-size: 22rpx;
+  margin-top: 5px;
 }
 
 .top .title {
-  font-size: 15rps;
+  font-size: 15rps;  
+  color: #868686;
 }
 
 .filterButton {
   display: flex;
+  margin-right:5rpx;
   align-items: center;
+  font-size: 15rpx;
 }
 
 .detail {
@@ -56,4 +60,27 @@
   text-align: center;
   padding: 50rpx;
   color: #ccc;
+}
+
+/*  */
+.com-rating {
+  display: inline-block;
+  font-size: 1.2em;
+  letter-spacing: .3em;
+}
+.com-rating .rating-on,
+.com-rating .rating-off {
+  display: inline-block;
+}
+.com-rating .rating-on {
+  color: rgb(223, 41, 41);
+  position: absolute;
+  overflow: hidden;
+  padding: 0;
+  margin: 0;
+}
+.com-rating .rating-off {
+  color: #DBDBDB;
+  padding: 0;
+  margin: 0;
 }

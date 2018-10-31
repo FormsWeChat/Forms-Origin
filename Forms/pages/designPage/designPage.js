@@ -21,8 +21,18 @@ Page({
   },
 
   onClickSuggestion: function (e) {
-    console.log("Yeah:", e.detail.msg);
-    
+    console.log("Yeah:", e);
+    this.setData({
+      showBottom: e.detail.eventType
+    });
+    if (e.detail.eventType === "button") {
+      let newOptions = this.data.Options;
+      let optionLength = newOptions.length;
+      newOptions[optionLength-1] = { Text:e.detail.item, Card: false, DoneInput: false }
+      this.setData({
+        Options: newOptions
+      })
+    }
   },
 
   onClickSuggestionTitle: function(e) {
@@ -35,7 +45,7 @@ Page({
   backToSuggestion: function(e) {
     console.log("Yeah:", e);
     this.setData({
-      showBottom: e.EventType
+      showBottom: e.detail.eventType
     });
 
   },
