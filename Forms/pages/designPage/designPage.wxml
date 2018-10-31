@@ -13,11 +13,19 @@
 </template>
 
 <template name="option-item">
-  <view wx:if="{{Card}}" class="option">
+  <view wx:if="{{!Card}}" class="option">
     <input class="option-input" placeholder='{{Text}}'/>
   </view>
   <view wx:else class="suggestionContainer">
-    <template is="item-suggest" data="{{item}}"/>
+    <view class="item-suggest-button" bindtap='onSuggestButton' id="{{title}}">
+      <image class="itemImage" src="/../../images/cat.jpg" mode="aspectFill" />
+      <view class="detail">
+        <text class="title">{{title}}</text>
+        <template is='rating' data='{{rating:7.3,max:10}}'></template>
+        <text class="comments"><block>{{comments}} items</block></text>
+        <text class="price"><block> {{price}} </block></text>
+      </view>
+    </view>
   </view>
 </template>
 
@@ -31,8 +39,10 @@
   <view class="div-line"/>
   
 
-  <view class="options-container">
+  <view class="design-container">
+    <scroll-view scroll-y="true" class="options-container">
     <template wx:for="{{Options}}" wx:key="Options{{Text}}" is="option-item" data="{{...item}}"></template>
+    </scroll-view>
     <view class="div-line"/>
     <button class="add-options-button" bindtap='onAddOptionsButton' id="{{}}">Add options
     </button>
