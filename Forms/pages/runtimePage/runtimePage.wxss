@@ -16,7 +16,6 @@
 .swiper-container {
   height: 80%;
   padding-top: 10%;
-  border: 1px solid #008272;
 }
 
 .swiper-item {
@@ -50,19 +49,26 @@
 }
 
 .title-container{
-  display: inline-block;
+  width: 100%;
+  display: table;
   padding-bottom: 20px;
   padding-top: 10px;
 }
 
 .title {
+  display: table-cell;
   font-size: 16px;
+  line-height: 30px;
 }
 
 .distance {
+  display: table-cell;
+  color: #a8a8a8;
   font-size: 13px;
+  line-height: 30px;
   text-align: right;
-  padding-left: 55px;
+  position: absolute;
+  right: 45px;
 }
 
 .rating-comment-price {
@@ -72,20 +78,24 @@
 }
 
 .rating-information {
+  color: #a8a8a8;
   font-size: 13px;
 }
 
 .comment-information {
+  color: #a8a8a8;
   font-size: 13px;
   padding-left: 20px;
 }
 
 .price-information {
+  color: #a8a8a8;
   font-size: 13px;
   padding-left: 20px;
 }
 
 .type-information {
+  color: #a8a8a8;
   font-size: 13px;
 }
 
