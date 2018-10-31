@@ -29,7 +29,7 @@
       <suggest-Title bindmyevent="onClickSuggestionTitle"/>
     </view>
     <view wx:if="{{showBottom == 'suggestion'}}">
-      <suggestion-List bindmyevent="onClickSuggestion">
+      <suggestion-List bindmyevent="onClickSuggestion" id="suggestion-List">
       </suggestion-List>
     </view>
     <view wx:if="{{showBottom == 'filter'}}">
