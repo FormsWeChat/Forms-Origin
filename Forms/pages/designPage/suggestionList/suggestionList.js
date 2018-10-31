@@ -14,6 +14,9 @@ Component({
     Options: [
       { Text: "Option1"}
     ],
+    Sort: '',
+    MinPrice: '',
+    MaxPrice: '',
   },
 
   methods: {
@@ -49,12 +52,57 @@ Component({
   
       // 类型： in_theaters  coming_soon  us_box
       this.data.type = params.type || this.data.type;*/
+      wx.getStorage({
+        key: 'Sort',
+        success: res => {
+          console.log(res.data);
+          this.setData({
+            Sort: res.data
+          })
+        }
+      })
+      wx.getStorage({
+        key: 'MinPrice',
+        success:res => {
+          console.log(res.data);
+          this.setData({
+            MinPrice: res.data
+          });
+        }
+      })
+      wx.getStorage({
+        key: 'MaxPrice',
+        success: res => {
+          console.log(res.data);
+          this.setData({
+            MaxPrice: res.data
+          })
+        }
+      })
 
       this.loadMore();
     },
 
-    onFilter: function onFilter() {
-
+    attached: function () {
+      // Do something when page show.
+      wx.getStorage({
+        key: 'Sort',
+        success(res) {
+          console.log(res.data)
+        }
+      })
+      wx.getStorage({
+        key: 'MinPrice',
+        success(res) {
+          console.log(res.data)
+        }
+      })
+      wx.getStorage({
+        key: 'MaxPrice',
+        success(res) {
+          console.log(res.data)
+        }
+      })
     },
     /**
      * 页面相关事件处理函数--监听用户下拉动作
