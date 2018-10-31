@@ -33,7 +33,7 @@
       </suggestion-List>
     </view>
     <view wx:if="{{showBottom == 'filter'}}">
-      <filter>
+      <filter bindmyevent="backToSuggestion">
       </filter>
     </view>
   </view>

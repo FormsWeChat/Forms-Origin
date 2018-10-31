@@ -22,6 +22,7 @@ Page({
 
   onClickSuggestion: function (e) {
     console.log("Yeah:", e.detail.msg);
+    
   },
 
   onClickSuggestionTitle: function(e) {
@@ -29,6 +30,14 @@ Page({
       Title: e.detail.Title,
       showBottom: "suggestion"
     });
+  },
+
+  backToSuggestion: function(e) {
+    console.log("Yeah:", e);
+    this.setData({
+      showBottom: e.EventType
+    });
+
   },
 
   onLoad: function () {
