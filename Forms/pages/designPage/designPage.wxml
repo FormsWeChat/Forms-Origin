@@ -32,6 +32,10 @@
       <suggestion-List bindmyevent="onClickSuggestionCard">
       </suggestion-List>
     </view>
+    <view wx:if="{{showBottom == 'filter'}}">
+      <filter>
+      </filter>
+    </view>
   </view>
 
   
