@@ -13,7 +13,7 @@ Page({
 
   onAddOptionsButton: function (e) {
     let newOptions = this.data.Options;
-    newOptions.push({ Text: "Option" + (newOptions.length + 1), Card: true, DoneInput: false, title: "", rate: 0, comments: 0, price: "" })
+    newOptions.push({ Text: "Option" + (newOptions.length + 1), Card: false, DoneInput: false, title: "", rate: 0, comments: 0, price: "" })
     this.setData({
       Options: newOptions
     })
@@ -40,6 +40,7 @@ Page({
         Options: newOptions,
         showBottom: "suggestion"
       })
+      this.onAddOptionsButton()
     }
     else if (e.detail.eventType === "suggestion") {
       const component = this.selectComponent('#suggestion-List');
