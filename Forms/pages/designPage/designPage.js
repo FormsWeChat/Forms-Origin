@@ -29,7 +29,14 @@ Page({
     this.setData({
       Title: e.detail.Title,
       showBottom: "filter"
-    });
+    })
+    wx.setStorage({
+      key: 'Title',
+      data: this.data.Title,
+    })
+    wx.navigateTo({
+      url: '../runtimePage/runtimePage',
+    })
   },
 
   backToSuggestion: function(e) {
