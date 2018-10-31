@@ -8,8 +8,8 @@ Component({
     page: 1,
     size: 20,
     restaurants: [
-      { title: "Nan Jing Da Pai Dang" },
-      { title: "Zhong 8 Lou" },
+      { title: "Nan Jing Da Pai Dang", comments: "1000", price: "$98/person" },
+      { title: "Zhong 8 Lou", comments: "1000", price: "$98/person" },
     ],
     Options: [
       { Text: "Option1"}

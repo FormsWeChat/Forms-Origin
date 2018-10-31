@@ -1,18 +1,18 @@
-<view class="list-container">
-  <template name="item-suggest">
-    <view class="item-suggest-button" bindtap='onSuggestButton' id="{{title}}">
-    <image class="itemImage" src="../../images/star.png" mode="aspectFill"/>
-    <view class="meta">
-      <text class="title">{{title}}</text>
-    </view>
-    </view>
-  </template>
-</view>
+<template name="item-suggest">
+  <view class="item-suggest-button" bindtap='onSuggestButton' id="{{title}}">
+    <image class="itemImage" src="/../../images/cat.jpg" mode="aspectFill" />
+      <view class="detail">
+        <text class="title">{{title}}</text>
+        <star></star>
+        <text class="comments"><block>{{comments}} </block></text>
+        <text class="price"><block> {{price}} </block></text>
+      </view>
+  </view>
+</template>
 
 <view class="suggestionContainer">
   <text class="title"> Suggested options</text>
-  <block/>
-  <view wx:for="{{restaurants}}" wx:key="{{restaurants}}">
+  <view wx:for="{{restaurants}}" wx:key="{{restaurants}}" class="list-container">
     <template is="item-suggest" data="{{...item}}"> </template>
   </view>
   <view class="tips">
@@ -27,4 +27,3 @@
 </view>
 
 <loading hidden="{{ !loading }}">Loading...</loading>
-
