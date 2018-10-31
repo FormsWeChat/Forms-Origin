@@ -2,13 +2,13 @@
   "pages": [
     "pages/index/index",
     "pages/logs/logs",
-    "pages/designPage/designPage"
+    "pages/designPage/designPage",
+    "pages/resultPage/analysisPage"
   ],
-
-  "window":{
-    "backgroundTextStyle":"light",
+  "window": {
+    "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#008272",
     "navigationBarTitleText": "Forms",
-    "navigationBarTextStyle":"black"
+    "navigationBarTextStyle": "black"
   }
 }
