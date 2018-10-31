@@ -3,7 +3,8 @@
     "pages/index/index",
     "pages/logs/logs",
     "pages/designPage/designPage",
-    "pages/resultPage/analysisPage"
+    "pages/resultPage/analysisPage",
+    "pages/runtimePage/runtimePage"
   ],
   "window": {
     "backgroundTextStyle": "light",
