@@ -8,8 +8,8 @@ Component({
     page: 1,
     size: 20,
     restaurants: [
-      { title: "Nan Jing Da Pai Dang", comments: "1000", price: "$98/person", rating: 4 },
-      { title: "Zhong 8 Lou", comments: "1000", price: "$98/person", rating: 3 },
+      { title: "Nan Jing Da Pai Dang", comments: "1000", price: "$98/person", rate: 4 },
+      { title: "Zhong 8 Lou", comments: "1000", price: "$98/person", rate: 3 },
     ],
     Options: [
       { Text: "Option1"}
@@ -74,7 +74,9 @@ Component({
     },
 
     onSuggestButton: function (e) {
-      var myEventDetail = { eventType: "button", item: e.detail } // detail对象，提供给事件监听函数
+
+      var myEventDetail = { eventType: "button", item: e.currentTarget.id} // detail对象，提供给事件监听函数
+      console.log(e)
       var myEventOption = {} // 触发事件的选项
       this.triggerEvent('myevent', myEventDetail, myEventOption)
     },

@@ -1,4 +1,6 @@
 /*  */
+@import "./font-awesome.min.wxss";
+
 .com-rating {
   display: inline-block;
   font-size: 1.2em;
