@@ -25,9 +25,16 @@ namespace FormsForWeChat
             builder.EntitySet<Shop>("Shops");
             builder.EntitySet<User>("Users");
             builder.Action("SignIn").Parameter<string>("code");
+
             builder.EntityType<Response>().Collection
                 .Function("Summary")
                 .Returns<ResponseSummary>();
+
+            builder.EntityType<Shop>()
+                .OrderBy()
+                .Filter()
+                .Page(50, 100);
+
             config.MapODataServiceRoute(
                 routeName: "ODataRoute",
                 routePrefix: null,

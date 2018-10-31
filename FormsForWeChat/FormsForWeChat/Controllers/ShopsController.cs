@@ -29,7 +29,7 @@ namespace FormsForWeChat.Controllers
         }
 
         [HttpGet]
-        [EnableQuery(AllowedQueryOptions = Microsoft.AspNet.OData.Query.AllowedQueryOptions.All)]
+        [EnableQuery]
         [ODataRoute("Shops")]
         public IQueryable<Shop> Get()
         {
