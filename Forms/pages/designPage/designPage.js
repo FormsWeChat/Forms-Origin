@@ -20,7 +20,7 @@ Page({
     })
   },
 
-  onClickSuggestionCard: function (e) {
+  onClickSuggestion: function (e) {
     console.log("Yeah:", e.detail.msg);
     
   },

@@ -1,6 +1,5 @@
 {
   "component": true,
   "usingComponents": {
-    "star": "../../star/star"
   }
 }
