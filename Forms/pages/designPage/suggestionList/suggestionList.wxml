@@ -1,10 +1,14 @@
+<import src='../../rating/rating' />
+
 <template name="item-suggest">
   <view class="item-suggest-button" bindtap='onSuggestButton' id="{{title}}">
     <image class="itemImage" src="/../../images/cat.jpg" mode="aspectFill" />
       <view class="detail">
         <text class="title">{{title}}</text>
-        <star></star>
-        <text class="comments"><block>{{comments}} </block></text>
+        <view wx:if='{{rating>0}}'>
+          <template is='rating' data='{{rating}}'></template>
+        </view>
+        <text class="comments"><block>{{comments}} "items"</block></text>
         <text class="price"><block> {{price}} </block></text>
       </view>
   </view>
