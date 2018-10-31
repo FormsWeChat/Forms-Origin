@@ -12,8 +12,8 @@ Component({
    */
   data: {
     orderCandidate:[
-      { name:"Service", clicked: false},
-      { name: "Tasty", clicked: true},
+      { name:"Service", clicked: true},
+      { name: "Tasty", clicked: false},
       { name: "Environment", clicked: false}
     ],
     orderBy:"Tasty",
@@ -59,5 +59,10 @@ Component({
         orderBy: e.target.id
       })
     },
+    applyFilter: function (e) {
+      var myEventDetail = { EventType: "suggetion"} // detail对象，提供给事件监听函数
+      var myEventOption = {} // 触发事件的选项
+      this.triggerEvent('myevent', myEventDetail, myEventOption)
+    }
   }
 })

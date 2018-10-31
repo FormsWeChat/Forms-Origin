@@ -18,7 +18,7 @@ Page({
   onClickStart: function() {
     wx.redirectTo({
       // test
-      url: '../resultPage/analysisPage',
+      url: '../designPage/designPage',
     })
   },
   onLoad: function () {

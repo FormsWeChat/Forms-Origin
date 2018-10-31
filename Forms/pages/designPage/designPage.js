@@ -22,13 +22,22 @@ Page({
 
   onClickSuggestionCard: function (e) {
     console.log("Yeah:", e.detail.msg);
+    
   },
 
   onClickSuggestionTitle: function(e) {
     this.setData({
       Title: e.detail.Title,
-      showBottom: "filter"
+      showBottom: "suggestion"
     });
+  },
+
+  backToSuggestion: function(e) {
+    console.log("Yeah:", e);
+    this.setData({
+      showBottom: e.EventType
+    });
+
   },
 
   onLoad: function () {
