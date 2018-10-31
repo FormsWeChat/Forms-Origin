@@ -1,8 +1,42 @@
+.suggestionContainer {
+  width:80%;
+  padding-left:10%;
+}
+
 .item-suggest-button {
-  margin-top: 5px;
+  margin-top: 40rpx;
+  display: flex;
 }
 
 .itemImage {
-  width: 50rpx;
-  height: 50rpx;
+  width: 100px;
+  height: 80px;
+  margin-right: 20rpx;
+}
+
+.list-container {
+  display: flex;
+}
+
+.detail {
+  flex: 1;
+}
+
+.detail .title {
+  display: block;
+  font-size: 32rpx;
+  font-weight: bold;
+}
+
+.detail .comments,
+.detail .price {
+  display: inline;
+  font-size: 22rpx;
+}
+
+.tips {
+  font-size: 28rpx;
+  text-align: center;
+  padding: 50rpx;
+  color: #ccc;
 }
