@@ -28,14 +28,14 @@ Page({
   onClickSuggestionTitle: function(e) {
     this.setData({
       Title: e.detail.Title,
-      showBottom: "suggestion"
+      showBottom: "filter"
     });
   },
 
   backToSuggestion: function(e) {
     console.log("Yeah:", e);
     this.setData({
-      showBottom: e.EventType
+      showBottom: e.detail.EventType
     });
 
   },

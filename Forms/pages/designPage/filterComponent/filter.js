@@ -27,13 +27,21 @@ Component({
    * 组件的方法列表
    */
   methods: {
+    backToSuggestion: function(e) {
+      var myEventDetail = { EventType: "suggestion" } // detail对象，提供给事件监听函数
+      var myEventOption = {} // 触发事件的选项
+      this.triggerEvent('myevent', myEventDetail, myEventOption)
+    },
     lowValueChangeAction: function(e) {
-      console.log(e)
       this.setData({choseMinPrice: e.detail.lowValue})
     },
     highValueChangeAction: function (e) {
-      console.log(e);
-      this.setData({ choseMinPrice: e.detail.highValue })
+      if(e.detail.highValue == 300) {
+        this.setData({ choseMaxPrice: "300+"})
+      }
+      else {
+        this.setData({ choseMaxPrice: e.detail.highValue })
+      }
     },
     clickService: function(e) {
       let index = this.data.orderCandidate.findIndex((item) => {
@@ -60,7 +68,15 @@ Component({
       })
     },
     applyFilter: function (e) {
-      var myEventDetail = { EventType: "suggetion"} // detail对象，提供给事件监听函数
+      wx.setStorage({
+        key: 'Sort',
+        data: this.data.orderBy,
+      })
+      wx.setStorage({
+        key: 'MinPrice',
+        data: this.data.orderBy,
+      })
+      var myEventDetail = { EventType: "suggestion"} // detail对象，提供给事件监听函数
       var myEventOption = {} // 触发事件的选项
       this.triggerEvent('myevent', myEventDetail, myEventOption)
     }
