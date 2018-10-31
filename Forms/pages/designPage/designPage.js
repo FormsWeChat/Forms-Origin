@@ -28,9 +28,10 @@ Page({
     if (e.detail.eventType === "button") {
       let newOptions = this.data.Options;
       let optionLength = newOptions.length;
-      newOptions[optionLength-1] = { Text:e.detail.item, Card: false, DoneInput: false }
+      newOptions[optionLength-1] = { Text:e.detail.item.title, Card: false, DoneInput: false }
       this.setData({
-        Options: newOptions
+        Options: newOptions,
+        showBottom: "suggestion"
       })
     }
   },
@@ -38,7 +39,7 @@ Page({
   onClickSuggestionTitle: function(e) {
     this.setData({
       Title: e.detail.Title,
-      showBottom: "filter"
+      showBottom: "suggestion"
     });
   },
 
