@@ -20,14 +20,14 @@ Page({
     })
   },
 
-  onClickSuggestionCard: function (e) {
+  onClickSuggestion: function (e) {
     console.log("Yeah:", e.detail.msg);
   },
 
   onClickSuggestionTitle: function(e) {
     this.setData({
       Title: e.detail.Title,
-      showBottom: "filter"
+      showBottom: "suggestion"
     });
   },
 
