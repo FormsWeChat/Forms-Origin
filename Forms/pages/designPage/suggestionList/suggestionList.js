@@ -74,8 +74,14 @@ Component({
     },
 
     onSuggestButton: function (e) {
-
-      var myEventDetail = { eventType: "button", item: e.currentTarget.id} // detail对象，提供给事件监听函数
+      let item;
+      this.data.restaurants.forEach(element => {
+          if (element.title === e.currentTarget.id) {
+            item = element;
+            return true;
+          }
+      });
+      var myEventDetail = { eventType: "button", item: item} // detail对象，提供给事件监听函数
       console.log(e)
       var myEventOption = {} // 触发事件的选项
       this.triggerEvent('myevent', myEventDetail, myEventOption)
