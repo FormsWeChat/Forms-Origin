@@ -7,28 +7,127 @@ Page({
    * Page initial data
    */
   data: {
-    toView: 'red',
-    scrollTop: 100,
-
     // Mock vote data
     vote:
-    {
+      {
         items: [{
           storeName: '南京大排档',
-          count: 5
+          count: 9,
+          images: [{
+            src: "http://pic1.win4000.com/wallpaper/8/5260ceb4636ec.jpg?down"
+          },
+          {
+            src: "https://www.bomb01.com/upload/news/original/b8e483bfb6793f50b27b64ad53bda073.jpg"
+          },
+          {
+            src: "http://img.ylq.com/2017/1022/thumb_300_400_20171022113434935.png"
+          },
+          {
+            src: "http://img0.utuku.china.com/520x0/news/20170627/b7ebeb9b-a300-4fc9-8800-55cc4c4244ae.jpg"
+          },
+          {
+            src: "http://a2.att.hudong.com/80/49/01100000000000144733498645188_s.jpg"
+          },
+          {
+            src: "http://a2.att.hudong.com/80/49/01100000000000144733498645188_s.jpg"
+          },
+          {
+            src: "http://a2.att.hudong.com/80/49/01100000000000144733498645188_s.jpg"
+          },
+          {
+            src: "http://a2.att.hudong.com/80/49/01100000000000144733498645188_s.jpg"
+          },
+          {
+            src: "http://a2.att.hudong.com/80/49/01100000000000144733498645188_s.jpg"
+          }]
         }, {
-            storeName: '那家小馆',
-            count: 2
+          storeName: '南京大排档',
+          count: 5,
+          images: [{
+            src: "http://pic1.win4000.com/wallpaper/8/5260ceb4636ec.jpg?down"
+          },
+          {
+            src: "http://a2.att.hudong.com/80/49/01100000000000144733498645188_s.jpg"
+          },
+          {
+            src: "http://a2.att.hudong.com/80/49/01100000000000144733498645188_s.jpg"
+          },
+          {
+            src: "http://a2.att.hudong.com/80/49/01100000000000144733498645188_s.jpg"
+          },
+          {
+            src: "http://a2.att.hudong.com/80/49/01100000000000144733498645188_s.jpg"
+          }]
         }, {
-            storeName: '将太无二',
-            count: 3
+          storeName: '南京大排档',
+          count: 5,
+          images: [{
+            src: "http://pic1.win4000.com/wallpaper/8/5260ceb4636ec.jpg?down"
+          },
+          {
+            src: "http://a2.att.hudong.com/80/49/01100000000000144733498645188_s.jpg"
+          },
+          {
+            src: "http://a2.att.hudong.com/80/49/01100000000000144733498645188_s.jpg"
+          },
+          {
+            src: "http://a2.att.hudong.com/80/49/01100000000000144733498645188_s.jpg"
+          },
+          {
+            src: "http://a2.att.hudong.com/80/49/01100000000000144733498645188_s.jpg"
+          }]
         }, {
-            storeName: '皖南水乡',
-            count: 2
+          storeName: '南京大排档',
+          count: 5,
+          images: [{
+            src: "http://pic1.win4000.com/wallpaper/8/5260ceb4636ec.jpg?down"
+          },
+          {
+            src: "http://a2.att.hudong.com/80/49/01100000000000144733498645188_s.jpg"
+          },
+          {
+            src: "http://a2.att.hudong.com/80/49/01100000000000144733498645188_s.jpg"
+          },
+          {
+            src: "http://a2.att.hudong.com/80/49/01100000000000144733498645188_s.jpg"
+          },
+          {
+            src: "http://a2.att.hudong.com/80/49/01100000000000144733498645188_s.jpg"
+          }]
+        }, {
+          storeName: '那家小馆',
+          count: 2,
+          images: [{
+            src: "http://a2.att.hudong.com/80/49/01100000000000144733498645188_s.jpg"
+          },
+          {
+            src: "http://a2.att.hudong.com/80/49/01100000000000144733498645188_s.jpg"
+          }]
+        }, {
+          storeName: '将太无二',
+          count: 3,
+          images: [{
+            src: "http://pic1.win4000.com/wallpaper/8/5260ceb4636ec.jpg?down"
+          },
+          {
+            src: "http://a2.att.hudong.com/80/49/01100000000000144733498645188_s.jpg"
+          },
+          {
+            src: "http://a2.att.hudong.com/80/49/01100000000000144733498645188_s.jpg"
+          }]
+        }, {
+          storeName: '皖南水乡',
+          count: 2,
+          images: [{
+            src: "http://pic1.win4000.com/wallpaper/8/5260ceb4636ec.jpg?down"
+          },
+          {
+            src: "http://a2.att.hudong.com/80/49/01100000000000144733498645188_s.jpg"
+          }]
         }],
         storeName: '南京大排档',
         count: 12
-    },
+      },
   },
 
   /**
@@ -39,28 +138,27 @@ Page({
 
     var that = this;
 
-     //获取投票结果
-     /*
-    wx.request( {
-      url: config.resultUrl,
-      data: {
-        VOTE_ID: voteId,
-        OPEN_ID: wx.getStorageSync( 'openid' )
-        },
-
-        success: function(res) {
-          console.log( res.data )
-          that.setData( {
-            vote: res.data
-            });
-            }
-        });*/
+    //获取投票结果
+    /*
+   wx.request( {
+     url: config.resultUrl,
+     data: {
+       VOTE_ID: voteId,
+       OPEN_ID: wx.getStorageSync( 'openid' )
+       },
+ 
+       success: function(res) {
+         console.log( res.data )
+         that.setData( {
+           vote: res.data
+           });
+           }
+       });*/
   },
 
-  bookShop: function () {
-    var that = this
+  orderPhoneCall: function () {
     wx.makePhoneCall({
-      phoneNumber: 15910699632,
+      phoneNumber: '+8615910699632',
       success: function () {
         console.log("成功拨打电话")
       }

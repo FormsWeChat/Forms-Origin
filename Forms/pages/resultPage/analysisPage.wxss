@@ -1,1 +1,91 @@
 /* pages/resultPage/analysisPage.wxss */
+
+.page__hd {
+    font-size: 20px;
+    margin-top: 20px;
+    margin-left: calc(10% + 5px);
+}
+
+.vote_item_title {
+    margin-top: 20px;
+    margin-left: calc(10% + 5px);
+    font-size: 17px;
+}
+
+.item_count_span {
+    color: #008272;
+    margin-left: 3px;
+}
+
+.vote_item_progress {
+    background-color: gainsboro;
+    border-radius: 100px;
+    overflow: hidden;
+    width: calc(80% - 10px);
+    margin-left: calc(10% + 5px);
+    margin-top: 12px;
+}
+
+.vote_image_common {
+    width: 30px;
+    height: 30px;
+    border: 0;
+    border-radius: 30px;
+}
+
+.vote_image_view {
+    background-color: #FFFFFF;
+    text-align: center;
+    display: inline-flex;
+    margin-top: 12px;
+    margin-right: 12px;
+}
+
+.vote_image_views {
+    margin-left: calc(10% + 5px);
+    justify-content: space-around;
+    align-items: center;
+    flex-flow: row nowrap;
+    widows: 100%;
+}
+
+.vote_image_more {
+    color: black;
+    background: gainsboro;
+    padding-top: -20px;
+}
+
+.vote_text_span {
+    font-size: 12px;
+    position: absolute;
+    top: 6px;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    text-align: center;
+}
+
+.vote_image_text_view {
+    position: relative;
+}
+
+.vote_button_view {
+    margin-top: 20px;
+    width: calc(80% - 10px);
+    margin-left: calc(10% + 5px);
+}
+
+.booking_button {
+    background-color: #008272;
+    color: #FFFFFF;
+    text-align: center;
+}
+
+.booking_button_hover {
+   background-color: #004B50;
+}
+
+.page_footer {
+  margin-bottom: 20px;
+  height: 30px;
+}
