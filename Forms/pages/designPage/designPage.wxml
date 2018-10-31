@@ -1,7 +1,15 @@
 <!--index.wxml-->
 
 <template name="item-suggest">
-  
+  <view class="item-suggest-button" bindtap='onSuggestButton' id="{{title}}">
+    <image class="itemImage" src="/../../images/cat.jpg" mode="aspectFill" />
+    <view class="detail">
+      <text class="title">{{title}}</text>
+      <!-- <template is='rating' data='{{rating:7.3,max:10}}'></template> -->
+      <text class="comments"><block>{{comments}} items</block></text>
+      <text class="price"><block> {{price}} </block></text>
+    </view>
+  </view>
 </template>
 
 <template name="option-item">
