@@ -18,7 +18,6 @@ Page({
   },
   onClickStart: function () {
     wx.redirectTo({
-      // test
       url: '../designPage/designPage',
     })
   },
