@@ -16,7 +16,10 @@ namespace FormsForWeChat.Controllers
     public class FormsController : ODataController
     {
         private CloudTable FormTable = null;
+        private CloudTable QuestionTable = null;
+        private CloudTable ChoiceTable = null;
         private CloudTable ResponseTable = null;
+
         public FormsController() : base()
         {
             // Parse the connection string and return a reference to the storage account.
@@ -28,8 +31,12 @@ namespace FormsForWeChat.Controllers
 
             // Retrieve a reference to the FormTable.
             FormTable = tableClient.GetTableReference("Forms");
+            QuestionTable = tableClient.GetTableReference("Questions");
+            ChoiceTable = tableClient.GetTableReference("Choices");
             ResponseTable = tableClient.GetTableReference("Responses");
         }
+
+        #region Forms Operations
 
         [HttpGet]
         [ODataRoute("Forms")]
@@ -110,5 +117,100 @@ namespace FormsForWeChat.Controllers
                 return NotFound();
             }
         }
+
+        #endregion Forms Operations
+
+        #region Questions Operations
+
+        [HttpPost]
+        [ODataRoute("Forms({formId})/Questions")]
+        public IHttpActionResult Post([FromODataUri] string formId, [FromBody] Question question)
+        {
+            question.Id = Guid.NewGuid().ToString();
+            question.FormId = formId;
+
+            // Create the TableOperation object that inserts the customer entity.
+            TableOperation insertOperation = TableOperation.Insert(new TableEntityAdapter<Question>(question, formId, question.Id));
+
+            // Execute the operation.
+            QuestionTable.Execute(insertOperation);
+
+            return Created(question);
+        }
+
+        #endregion Questions Operations
+
+        #region Choices Operations
+
+        [HttpPost]
+        [ODataRoute("Forms({formId})/Questions({questionId})/Choices")]
+        public IHttpActionResult Post([FromODataUri] string formId, [FromODataUri] string questionId, [FromBody] Choice choice)
+        {
+            choice.Id = Guid.NewGuid().ToString();
+            choice.FormId = formId;
+            choice.QuestionId = questionId;
+
+            // Create the TableOperation object that inserts the customer entity.
+            TableOperation insertOperation = TableOperation.Insert(new TableEntityAdapter<Choice>(choice, questionId, choice.Id));
+
+            // Execute the operation.
+            ChoiceTable.Execute(insertOperation);
+
+            return Created(choice);
+        }
+
+        #endregion Choices Operations
+
+        #region Responses Operations
+
+        [HttpPost]
+        [ODataRoute("Forms({formId})/Responses")]
+        public IHttpActionResult Post([FromODataUri] string formId, [FromBody] Response response)
+        {
+            response.Id = Guid.NewGuid().ToString();
+            response.FormId = formId;
+
+            // Create the TableOperation object that inserts the customer entity.
+            TableOperation insertOperation = TableOperation.Insert(new TableEntityAdapter<Response>(response, formId, response.Id));
+
+            // Execute the operation.
+            ResponseTable.Execute(insertOperation);
+
+            return Created(response);
+        }
+
+        [HttpGet]
+        [ODataRoute("Forms({formId})/Responses/Summary")]
+        public IHttpActionResult Summary([FromODataUri] string formId)
+        {
+            var result = new ResponseSummary();
+            var item1 = new ResponseSummaryItem()
+            {
+                ShopTitle = "南京大排档",
+                Count = 4,
+                ResponderAvatarUrls = new List<string>() { "http://a2.att.hudong.com/80/49/01100000000000144733498645188_s.jpg", "http://a2.att.hudong.com/80/49/01100000000000144733498645188_s.jpg", "http://pic1.win4000.com/wallpaper/8/5260ceb4636ec.jpg?down" }
+            };
+            var item2 = new ResponseSummaryItem()
+            {
+                ShopTitle = "那家小馆",
+                Count = 3,
+                ResponderAvatarUrls = new List<string>() { "http://a2.att.hudong.com/80/49/01100000000000144733498645188_s.jpg", "http://a2.att.hudong.com/80/49/01100000000000144733498645188_s.jpg", "http://pic1.win4000.com/wallpaper/8/5260ceb4636ec.jpg?down" }
+            };
+            var item3 = new ResponseSummaryItem()
+            {
+                ShopTitle = "将太无二",
+                Count = 3,
+                ResponderAvatarUrls = new List<string>() { "http://a2.att.hudong.com/80/49/01100000000000144733498645188_s.jpg", "http://a2.att.hudong.com/80/49/01100000000000144733498645188_s.jpg", "http://pic1.win4000.com/wallpaper/8/5260ceb4636ec.jpg?down" }
+            };
+            result.Items.Add(item1);
+            result.Items.Add(item2);
+            result.Items.Add(item3);
+            result.WinnerTitle = "南京大排档";
+            result.Total = 10;
+            //return Json(result);
+            return Ok(result);
+        }
+
+        #endregion Responses Operations
     }
 }

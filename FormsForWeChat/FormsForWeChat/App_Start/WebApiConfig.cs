@@ -22,9 +22,6 @@ namespace FormsForWeChat
 
             var builder = new ODataConventionModelBuilder();
             builder.EntitySet<Form>("Forms");
-            builder.EntitySet<Question>("Questions");
-            builder.EntitySet<Choice>("Choices");
-            builder.EntitySet<Response>("Responses");
             builder.EntitySet<Shop>("Shops");
             builder.EntitySet<User>("Users");
             builder.Action("SignIn").Parameter<string>("code");

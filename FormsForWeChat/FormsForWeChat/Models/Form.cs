@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using Microsoft.AspNet.OData.Builder;
 
 namespace FormsForWeChat.Models
 {
@@ -13,7 +14,9 @@ namespace FormsForWeChat.Models
 
         public string Title { get; set; }
 
-        public IEnumerable<Question> Questions { get; set; }
-        public IEnumerable<Response> Responses { get; set; }
+        [Contained]
+        public ICollection<Question> Questions { get; set; }
+        [Contained]
+        public ICollection<Response> Responses { get; set; }
     }
 }

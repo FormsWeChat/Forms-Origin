@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using Microsoft.AspNet.OData.Builder;
 
 namespace FormsForWeChat.Models
 {
@@ -15,6 +16,7 @@ namespace FormsForWeChat.Models
 
         public int Order { get; set; }
 
-        public IEnumerable<Choice> Choices { get; set; }
+        [Contained]
+        public ICollection<Choice> Choices { get; set; }
     }
 }
