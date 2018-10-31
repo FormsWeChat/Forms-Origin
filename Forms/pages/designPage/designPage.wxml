@@ -27,8 +27,8 @@
       <input wx:if="{{Title == ''}}"class="input-title" placeholder='Typing your questions'/>
       <input wx:else class="input-title" value='{{Title}}'> </input>
     </view>
-  </view>
   <view class="div-line"/>
+  </view>
   
 
   <view class="design-container">
