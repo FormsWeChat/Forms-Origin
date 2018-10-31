@@ -38,7 +38,7 @@ Page({
   onClickSuggestionTitle: function(e) {
     this.setData({
       Title: e.detail.Title,
-      showBottom: "suggestion"
+      showBottom: "filter"
     });
   },
 
