@@ -4,7 +4,7 @@ Page({
     loading: true,
     Title: "",
     Options: [
-      { Text: "Option1", Card: false, DoneInput: false }
+      { Text: "Option1", Card: false, DoneInput: false, title: "", rate: 0, comments:0, price:""}
     ],
     showBottom: "title",
   },
@@ -13,21 +13,29 @@ Page({
 
   onAddOptionsButton: function (e) {
     let newOptions = this.data.Options;
-    newOptions.push({ Text: "Option" + (newOptions.length + 1), Card: false, DoneInput: false })
+    newOptions.push({ Text: "Option" + (newOptions.length + 1), Card: true, DoneInput: false, title: "", rate: 0, comments: 0, price: "" })
     this.setData({
       Options: newOptions
     })
   },
 
   onClickSuggestion: function (e) {
-    console.log("Yeah:", e);
+    console.log("ClickSuggestion:", e);
     this.setData({
       showBottom: e.detail.eventType
     });
     if (e.detail.eventType === "button") {
       let newOptions = this.data.Options;
       let optionLength = newOptions.length;
-      newOptions[optionLength - 1] = { Text: e.detail.item.title, Card: false, DoneInput: false }
+      newOptions[optionLength - 1] = { 
+        Text: e.detail.item.title, 
+        Card: true, 
+        DoneInput: false, 
+        title: e.detail.item.title, 
+        rate: e.detail.item.rate, 
+        comments: e.detail.item.comments, 
+        price: e.detail.item.price
+      }
       this.setData({
         Options: newOptions,
         showBottom: "suggestion"

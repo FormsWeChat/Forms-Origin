@@ -1,4 +1,5 @@
 /**index.wxss**/
+@import "suggestionList/suggestionList.wxss";
 .container {
   align-items: left;
   padding: 0px;  
@@ -15,7 +16,7 @@
 }
 
 .input-title-container {
-  padding-left: 5px;
+  padding-left: 0.3%;
 }
 
 .input-title{
@@ -27,7 +28,7 @@
   background-color: #F4F4F4;
   align-items: center;
   width: 100%;
-  height: 500px;
+  height: 60%;
 }
 
 .footer {
