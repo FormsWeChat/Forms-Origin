@@ -67,7 +67,10 @@ Page({
   },
 
   onShareAppMessage: function onShareAppMessage() {
-
+    return {
+      title: 'Where should we eat?',
+      path: '/pages/runtimePage/runtimePage'
+    }
   },
 
   shareForm: function (e) {
