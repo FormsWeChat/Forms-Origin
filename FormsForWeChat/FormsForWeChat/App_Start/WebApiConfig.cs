@@ -30,6 +30,12 @@ namespace FormsForWeChat
                 .Function("Summary")
                 .Returns<ResponseSummary>();
 
+            builder.EntityType<Form>()
+                .Expand(3, new string[] { "Questions" });
+            builder.EntityType<Question>()
+                .Expand(new string[] { "Choices" });
+            builder.EntityType<Choice>()
+                .Expand(new string[] { "Shop" });
             builder.EntityType<Shop>()
                 .OrderBy()
                 .Filter()

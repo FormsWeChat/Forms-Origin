@@ -12,5 +12,6 @@ namespace FormsForWeChat.Models
         public string FormId { get; set; }
         public int Order { get; set; }
         public string ShopId { get; set; }
+        public Shop Shop { get; set; }
     }
 }

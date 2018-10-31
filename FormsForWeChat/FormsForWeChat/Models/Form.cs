@@ -18,5 +18,11 @@ namespace FormsForWeChat.Models
         public ICollection<Question> Questions { get; set; }
         [Contained]
         public ICollection<Response> Responses { get; set; }
+
+        public Form()
+        {
+            Questions = new List<Question>();
+            Responses = new List<Response>();
+        }
     }
 }

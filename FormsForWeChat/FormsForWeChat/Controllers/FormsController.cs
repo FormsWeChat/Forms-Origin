@@ -50,6 +50,7 @@ namespace FormsForWeChat.Controllers
         }
 
         [HttpGet]
+        [EnableQuery(MaxExpansionDepth = 3)]
         [ODataRoute("Forms({formId})")]
         public IHttpActionResult Get([FromODataUri] string formId)
         {
@@ -64,7 +65,15 @@ namespace FormsForWeChat.Controllers
                 return NotFound();
             }
 
-            return Ok(((TableEntityAdapter<Form>)retrievedResult.Result).OriginalEntity);
+            TableQuery<TableEntityAdapter<Question>> query = new TableQuery<TableEntityAdapter<Question>>().Where(TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, formId));
+
+            var form = ((TableEntityAdapter<Form>)retrievedResult.Result).OriginalEntity;
+            foreach (var question in QuestionTable.ExecuteQuery(query).Select(result => result.OriginalEntity))
+            {
+                form.Questions.Add(question);
+            }
+
+            return Ok(form);
 
         }
 
