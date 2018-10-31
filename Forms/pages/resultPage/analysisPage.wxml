@@ -10,12 +10,19 @@
     <view class="page__bd">
 
         <view class="section section_gap">
-
             <block wx:for="{{vote.items}}" wx:for-index="idx" wx:for-item="item">
-                <text>{{item.storeName}}({{item.count}})</text>
+            <view>
+            <text class="vote_item_title">{{item.storeName}}({{item.count}})</text>
+            </view> 
                 
-                <progress percent="{{100*item.count/vote.count}}" stroke-width="10"                      backgroundColor='#fa' activeColor='#008272'style='border-radius:100px;overflow:hidden'/>
+                <progress class="vote_item_progress" percent="{{100*item.count/vote.count}}" stroke-width="10" activeColor='#008272'/>
 
+                <view class="vote_images_views">
+                <view wx:for="{{item.images}}" wx:for-index="iidx" wx:for-item="vimage" style='flex-item' class="vote_image_view">
+                <image wx:if="{{iidx < 2}}" src="{{vimage.src}}" class="vote_image vote_image_common"></image>
+                <button wx:elif="{{iidx == 2}}" class="vote_image_common vote_image_more"><span class="vote_text_span">+{{item.count-2}}</span></button>
+                </view>
+                </view>
             </block>
 
         </view>
@@ -24,7 +31,7 @@
 
             <view class="button-wrapper">
 
-            <button type="default" bindtap="bookshop">Booking({{vote.storeName}})</button>
+            <button class="booking_button" bindtap="bookshop">Booking({{vote.storeName}})</button>
 
             </view>
 

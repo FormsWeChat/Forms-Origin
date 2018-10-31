@@ -15,16 +15,52 @@ Page({
     {
         items: [{
           storeName: '南京大排档',
-          count: 5
+          count: 5,
+          images: [{
+            src: "http://pic1.win4000.com/wallpaper/8/5260ceb4636ec.jpg?down"
+          },
+          {
+            src: "http://a2.att.hudong.com/80/49/01100000000000144733498645188_s.jpg"
+          },
+          {
+            src: "http://a2.att.hudong.com/80/49/01100000000000144733498645188_s.jpg"
+          },
+          {
+            src: "http://a2.att.hudong.com/80/49/01100000000000144733498645188_s.jpg"
+          },
+          {
+            src: "http://a2.att.hudong.com/80/49/01100000000000144733498645188_s.jpg"
+          }]
         }, {
             storeName: '那家小馆',
-            count: 2
+            count: 2,
+            images: [{
+              src: "http://a2.att.hudong.com/80/49/01100000000000144733498645188_s.jpg"
+            },
+            {
+              src: "http://a2.att.hudong.com/80/49/01100000000000144733498645188_s.jpg"
+            }]
         }, {
             storeName: '将太无二',
-            count: 3
+            count: 3,
+            images: [{
+              src: "http://pic1.win4000.com/wallpaper/8/5260ceb4636ec.jpg?down"
+            },
+            {
+              src: "http://a2.att.hudong.com/80/49/01100000000000144733498645188_s.jpg"
+            },
+            {
+              src: "http://a2.att.hudong.com/80/49/01100000000000144733498645188_s.jpg"
+            }]
         }, {
             storeName: '皖南水乡',
-            count: 2
+            count: 2,
+            images: [{
+              src: "http://pic1.win4000.com/wallpaper/8/5260ceb4636ec.jpg?down"
+            },
+            {
+              src: "http://a2.att.hudong.com/80/49/01100000000000144733498645188_s.jpg"
+            }]
         }],
         storeName: '南京大排档',
         count: 12
