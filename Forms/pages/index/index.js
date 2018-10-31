@@ -9,6 +9,8 @@ Page({
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     code: '',
+    Id: '',
+    SignInHash: '',
   },
   //事件处理函数
   bindViewTap: function () {
@@ -18,34 +20,40 @@ Page({
   },
   onClickStart: function () {
     wx.redirectTo({
-      // test
-      url: '../resultPage/analysisPage',
+      url: '../designPage/designPage',
     })
   },
 
   onLoad: function () {
     if (app.globalData.userInfo) {
+      console.log(app.globalData.userInfo);
       this.setData({
         userInfo: app.globalData.userInfo,
         hasUserInfo: true
       })
     } else {
       wx.login({
-        success(res) {
-          console.log(res.code)
-          //发起网络请求
+        success: res => {
+          // 发送 res.code 到后台换取 openId, sessionKey
           wx.request({
-            url: 'https://test.com/onLogin',
-            data: {
-              code: res.code
+            url:  "http://miniforms.azurewebsites.net/SignIn",
+            data: { code: res.code },
+            method:  "POST",
+            success: res=> {
+              console.log(res.data);
+              this.setData({
+                Id: res.data.Id,
+                SignInHash: res.data.SignInHash,
+              })
             }
           })
         }
-    })
+      }) 
     // 在没有 open-type=getUserInfo 版本的兼容处理
     wx.getUserInfo({
       success: res => {
         app.globalData.userInfo = res.userInfo
+        console.log(res.userInfo)
         this.setData({
           userInfo: res.userInfo,
           hasUserInfo: true

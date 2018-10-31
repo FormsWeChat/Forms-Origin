@@ -12,8 +12,8 @@ Component({
    */
   data: {
     orderCandidate:[
-      { name:"Service", clicked: false},
-      { name: "Tasty", clicked: true},
+      { name:"Service", clicked: true},
+      { name: "Tasty", clicked: false},
       { name: "Environment", clicked: false}
     ],
     orderBy:"Tasty",
@@ -27,13 +27,21 @@ Component({
    * 组件的方法列表
    */
   methods: {
+    backToSuggestion: function(e) {
+      var myEventDetail = { EventType: "suggestion" } // detail对象，提供给事件监听函数
+      var myEventOption = {} // 触发事件的选项
+      this.triggerEvent('myevent', myEventDetail, myEventOption)
+    },
     lowValueChangeAction: function(e) {
-      console.log(e)
       this.setData({choseMinPrice: e.detail.lowValue})
     },
     highValueChangeAction: function (e) {
-      console.log(e);
-      this.setData({ choseMinPrice: e.detail.highValue })
+      if(e.detail.highValue == 300) {
+        this.setData({ choseMaxPrice: "Unlimited"})
+      }
+      else {
+        this.setData({ choseMaxPrice: e.detail.highValue })
+      }
     },
     clickService: function(e) {
       let index = this.data.orderCandidate.findIndex((item) => {
@@ -59,5 +67,22 @@ Component({
         orderBy: e.target.id
       })
     },
+    applyFilter: function (e) {
+      wx.setStorage({
+        key: 'Sort',
+        data: this.data.orderBy,
+      })
+      wx.setStorage({
+        key: 'MinPrice',
+        data: this.data.choseMinPrice,
+      })
+      wx.setStorage({
+        key: 'MaxPrice',
+        data: this.data.choseMaxPrice,
+      })
+      var myEventDetail = { eventType: "suggestion"} // detail对象，提供给事件监听函数
+      var myEventOption = {} // 触发事件的选项
+      this.triggerEvent('myevent', myEventDetail, myEventOption)
+    }
   }
 })

@@ -123,7 +123,7 @@ Component({
       pagex = pagex - this.data.sliderLength
       let heighValue = parseInt(pagex / this.data.bigLength * (this.data.max - this.data.min) + this.data.min)
 
-      var myEventDetail = { heighValue: heighValue }
+      var myEventDetail = { highValue: heighValue }
       this.triggerEvent('heighValueChange', myEventDetail)
     },
 

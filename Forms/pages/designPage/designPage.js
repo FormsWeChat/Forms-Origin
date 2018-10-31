@@ -20,15 +20,35 @@ Page({
     })
   },
 
-  onClickSuggestionCard: function (e) {
-    console.log("Yeah:", e.detail.msg);
+  onClickSuggestion: function (e) {
+    console.log("Yeah:", e);
+    this.setData({
+      showBottom: e.detail.eventType
+    });
+    if (e.detail.eventType === "button") {
+      let newOptions = this.data.Options;
+      let optionLength = newOptions.length;
+      newOptions[optionLength-1] = { Text:e.detail.item.title, Card: false, DoneInput: false }
+      this.setData({
+        Options: newOptions,
+        showBottom: "suggestion"
+      })
+    }
   },
 
   onClickSuggestionTitle: function(e) {
     this.setData({
       Title: e.detail.Title,
-      showBottom: "filter"
+      showBottom: "suggestion"
     });
+  },
+
+  backToSuggestion: function(e) {
+    console.log("Yeah:", e);
+    this.setData({
+      showBottom: e.detail.eventType
+    });
+
   },
 
   onLoad: function () {

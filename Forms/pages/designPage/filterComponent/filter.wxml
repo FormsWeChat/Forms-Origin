@@ -1,23 +1,32 @@
 <!--pages/designPage/filterComponent/filter.wxml-->
-<template name="orderButton">
-  <button wx:if="{{clicked}}" class="sort-by-it" bindtap='click{{name}}' id="{{name}}">{{name}}</button>
-  <button wx:else class="sort-by-it-checked" bindtap='click{{name}}' id="{{name}}">{{name}}</button>
-</template>
+
 <view class="filter-component-container">
   <view class="back-container">
-    <button class="back">Back to suggestion</button>
+    <button class="back" bindtap='backToSuggestion'>Back to suggestion</button>
   </view>
   <view class="sort-by-container">
     <text class="filter-text">Sort by</text>
     <view class="sort-button-group">
-    <template wx:for="{{orderCandidate}}" is="orderButton" data="{{...item}}"></template>
+      <button wx:if="{{orderBy !== 'Service'}}" class="sort-by-it left" 
+        bindtap='clickService' id="Service">Service</button>
+      <button wx:else class="sort-by-it-checked left" 
+        bindtap='clickService' id="Service">Service</button>
+      <button wx:if="{{orderBy !== 'Tasty'}}" class="sort-by-it" 
+        bindtap='clickTasty' id="Tasty">Tasty</button>
+      <button wx:else class="sort-by-it-checked" 
+        bindtap='clickTasty' id="Tasty">Tasty</button>
+      <button wx:if="{{orderBy !== 'Environment'}}" class="sort-by-it right" 
+        bindtap='clickEnvironment' id="Environment">Environment</button>
+      <button wx:else class="sort-by-it-checked right" 
+        bindtap='clickEnvironment' id="Environment">Environment</button>
     </view>
-  </view>
+    </view>
   <view class="price-range-container">
-    <text class="filter-text">Price range</text>
+    <text class="filter-text">Price range:  ${{choseMinPrice}} - ${{choseMaxPrice}}</text>
     <view class="zy-slider">
-      <zy-slider minValue="{{minPrice}}" maxValue="{{maxPrice}}" min="0" max="300" selectedColor="#008272" blockColor="#008272" bind:lowValueChange="lowValueChangeAction"
-                bind:heighValueChange="highValueChangeAction" />
+      <zy-slider minValue="{{minPrice}}" maxValue="{{maxPrice}}" min="0" max="300" 
+        selectedColor="#008272" blockColor="#008272" bind:lowValueChange="lowValueChangeAction"
+        bind:heighValueChange="highValueChangeAction" />
     </view>
   </view>
   <button class="apply-filter-button" bindtap='applyFilter'>Apply</button>
