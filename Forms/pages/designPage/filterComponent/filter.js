@@ -37,7 +37,7 @@ Component({
     },
     highValueChangeAction: function (e) {
       if(e.detail.highValue == 300) {
-        this.setData({ choseMaxPrice: "300+"})
+        this.setData({ choseMaxPrice: "Unlimited"})
       }
       else {
         this.setData({ choseMaxPrice: e.detail.highValue })
@@ -74,7 +74,11 @@ Component({
       })
       wx.setStorage({
         key: 'MinPrice',
-        data: this.data.orderBy,
+        data: this.data.choseMinPrice,
+      })
+      wx.setStorage({
+        key: 'MaxPrice',
+        data: this.data.choseMaxPrice,
       })
       var myEventDetail = { EventType: "suggestion"} // detail对象，提供给事件监听函数
       var myEventOption = {} // 触发事件的选项
