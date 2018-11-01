@@ -129,6 +129,7 @@ Page({
         console.log(res.data)
         if(res.data.Questions.length > 0) {
           let newOptions = res.data.Questions[0].Choices.map((item) => {
+            item.Shop.Distance = (item.Shop.Distance/1000.0).toFixed(1)
             return {click: false, Choices: item}
           })
           that.setData({

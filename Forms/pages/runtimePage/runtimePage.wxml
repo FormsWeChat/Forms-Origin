@@ -6,7 +6,7 @@
     <view class="information-container">
       <view class="title-container">
         <text class="title">{{Choices.Shop.ShopTitle}}</text>
-        <text class="distance">{{Choices.Shop.Distance/1000.0}}km</text>
+        <text class="distance">{{Choices.Shop.Distance}}km</text>
       </view>
       <view class="rating-comment-price">
         <text class="rating-information">Rating: {{Choices.Shop.StarNet/10.0}}</text>
