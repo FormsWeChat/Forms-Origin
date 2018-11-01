@@ -3,8 +3,7 @@ Component({
     title: '',
     subtitle: '加载中...',
     type: 'movie',
-    loading: false,
-    hasMore: false,
+    loadData: "1",
     page: 1,
     size: 20,
     restaurants: [
@@ -20,38 +19,11 @@ Component({
   },
 
   methods: {
-    loadMore: function loadMore() {
-      var _this = this;
-
-      if (!this.data.hasMore) return;
-
-      //this.setData({ subtitle: '加载中...', loading: true });
-
-      /*return app.douban.find(this.data.type, this.data.page++, this.data.size).then(function (d) {
-        if (d.subjects.length) {
-          _this.setData({ subtitle: d.title, restaurants: _this.data.restaurants.concat(d.subjects), loading: false });
-        } else {
-          _this.setData({ subtitle: d.title, hasMore: false, loading: false });
-        }
-      }).catch(function (e) {
-        _this.setData({ subtitle: 'Loading data error', loading: false });
-        console.error(e);
-      });*/
-      // _this.setData({
-      //   subtitle: "Restaurant nearby",
-      //   restaurants: ["Nan Jing Da Pai Dang", "Zhong 8 Lou"],
-      //   loading: false
-      // });
-    },
-
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function onLoad() {
-      /*this.data.title = params.title || this.data.title;
-  
-      // 类型： in_theaters  coming_soon  us_box
-      this.data.type = params.type || this.data.type;*/
+
       wx.getStorage({
         key: 'Sort',
         success: res => {
@@ -80,7 +52,6 @@ Component({
         }
       })
 
-      this.loadMore();
     },
 
     attached: function () {
