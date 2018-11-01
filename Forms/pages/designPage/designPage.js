@@ -79,9 +79,4 @@ Page({
       path: '/pages/runtimePage/runtimePage?Mode=runtime'
     }
   },
-
-  shareForm: function (e) {
-    console.log(e)
-    Page.onshareAppMessage
-  },
 })
