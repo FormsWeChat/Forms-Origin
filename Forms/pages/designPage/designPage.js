@@ -139,6 +139,22 @@ Page({
   },
 
   onLoad: function () {
+    wx.setStorage({
+      key: 'Sort',
+      data: this.data.orderBy,
+    })
+    wx.setStorage({
+      key: 'MinPrice',
+      data: this.data.choseMinPrice,
+    })
+    wx.setStorage({
+      key: 'MaxPrice',
+      data: this.data.choseMaxPrice,
+    })
+    wx.setStorage({
+      key: 'Filter',
+      data: 0,
+    })
   },
 
   onShareAppMessage: function onShareAppMessage() {

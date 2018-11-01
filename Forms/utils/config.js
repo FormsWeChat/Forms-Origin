@@ -9,5 +9,4 @@ module.exports = {
   resultUrl: `${host}/Forms(`,//查看投票结果
 
   submitUrl: `${host}/request/vote/submit.js`, //提交投票
-
 }
