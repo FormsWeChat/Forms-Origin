@@ -5,13 +5,13 @@ Component({
     title: '',
     type: 'movie',
     loadData: "0",
-    size: 5,
+    size: 10,
     restaurants: [
     ],
     Options: [{
       Text: "Option1"
     }],
-    Sort: '',
+    Sort: "StarNet",
     MinPrice: '',
     MaxPrice: '',
   },
@@ -22,120 +22,113 @@ Component({
      */
     onLoad: function onLoad() {
       var that = this;
-      wx.request({
-          url: config.shopUrl + '?$top=' + this.data.size,
-          data: {},
-
-          success: function(res) {
-            console.log(res.data)
-            that.setData({
-              restaurants: res.data.value,
-              loadData: "1"
-            });
-          }
-        }),
-
-        wx.getStorage({
-          key: 'Sort',
-          success: res => {
-            console.log(res.data);
-            this.setData({
-              Sort: res.data
-            })
-          }
-        })
+      let url = config.shopUrl + '?';
       wx.getStorage({
-        key: 'MinPrice',
+        key: 'Filter',
         success: res => {
           console.log(res.data);
           this.setData({
-            MinPrice: res.data
-          });
-        }
-      })
-      wx.getStorage({
-        key: 'MaxPrice',
-        success: res => {
-          console.log(res.data);
-          this.setData({
-            MaxPrice: res.data
+            Filter: res.data
+          })
+          wx.getStorage({
+            key: 'Sort',
+            success: res => {
+              console.log(res.data);
+              this.setData({
+                Sort: res.data
+              })
+              wx.getStorage({
+                key: 'MinPrice',
+                success: res => {
+                  console.log(res.data);
+                  this.setData({
+                    MinPrice: res.data
+                  });
+                  wx.getStorage({
+                    key: 'MaxPrice',
+                    success: res => {
+                      console.log(res.data);
+                      this.setData({
+                        MaxPrice: res.data
+                      })
+
+                      if (that.data.Filter) {
+                        url = url + '$orderby=' + this.data.Sort + '&$filter=AveragePrice' + '%20lt%20 ' + this.data.MinPrice + '%20&%20ga%20' + this.data.MaxPrice;
+                      }
+                      wx.request({
+                        url: url + '&$top=' + that.data.size,
+                        method: 'GET',
+                        data: {},
+
+                        success: function (res) {
+                          console.log(res.data)
+                          that.setData({
+                            restaurants: res.data.value,
+                            loadData: "1",
+                            Filter: 0,
+                          });
+                        }
+                      })
+                    }
+                  })
+                }
+              })
+            }
           })
         }
       })
-
     },
 
-    attached: function() {
-      // Do something when page show.
-      wx.getStorage({
-        key: 'Sort',
-        success(res) {
-          console.log(res.data)
-        }
-      })
-      wx.getStorage({
-        key: 'MinPrice',
-        success(res) {
-          console.log(res.data)
-        }
-      })
-      wx.getStorage({
-        key: 'MaxPrice',
-        success(res) {
-          console.log(res.data)
-        }
-      })
-    },
     /**
      * Lifecycle function--Called when page is initially rendered
      */
-    onReady: function() {
-
+    onReady: function () {
+      
     },
 
     /**
      * Lifecycle function--Called when page show
      */
-    onShow: function() {
+    onShow: function () {
 
     },
 
     /**
      * Lifecycle function--Called when page hide
      */
-    onHide: function() {
+    onHide: function () {
 
     },
 
     /**
      * Lifecycle function--Called when page unload
      */
-    onUnload: function() {
+    onUnload: function () {
 
     },
 
     /**
      * Page event handler function--Called when user drop down
      */
-    onPullDownRefresh: function() {
+    onPullDownRefresh: function () {
 
     },
 
     /**
      * Called when page reach bottom
      */
-    onReachBottom: function() {
+    onReachBottom: function () {
 
     },
 
     /**
      * Called when user click on the top right corner to share
      */
-    onShareAppMessage: function() {
+    onShareAppMessage: function () {
 
     },
 
-    onSuggestButton: function(e) {
+    onSuggestButton: function (e) {
       let item;
       this.data.restaurants.forEach(element => {
         if (element.Id === e.currentTarget.id) {
@@ -152,7 +145,7 @@ Component({
       this.triggerEvent('myevent', myEventDetail, myEventOption)
     },
 
-    onFilter: function(e) {
+    onFilter: function (e) {
       var myEventDetail = {
         eventType: "filter"
       } // detail对象，提供给事件监听函数

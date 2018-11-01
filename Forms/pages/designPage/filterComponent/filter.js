@@ -12,11 +12,11 @@ Component({
    */
   data: {
     orderCandidate:[
-      { name:"Service", clicked: true},
-      { name: "Tasty", clicked: false},
-      { name: "Environment", clicked: false}
+      { name:"ServiceScore", clicked: true},
+      { name: "TasteScore", clicked: false},
+      { name: "EnvScore", clicked: false}
     ],
-    orderBy:"Tasty",
+    orderBy:"TasteScore",
     minPrice: 50,
     maxPrice: 150,
     choseMinPrice: 50,
@@ -79,6 +79,10 @@ Component({
       wx.setStorage({
         key: 'MaxPrice',
         data: this.data.choseMaxPrice,
+      })
+      wx.setStorage({
+        key: 'Filter',
+        data: 1,
       })
       var myEventDetail = { eventType: "suggestion", Sort: this.data.orderBy} // detail对象，提供给事件监听函数
       var myEventOption = {} // 触发事件的选项

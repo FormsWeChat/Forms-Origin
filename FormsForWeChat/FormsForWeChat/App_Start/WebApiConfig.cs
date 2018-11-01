@@ -28,6 +28,9 @@ namespace FormsForWeChat
             builder.Action("SetAvatar").Parameter<string>("avatarUrl");
 
             builder.EntityType<Response>().Collection
+                .Function("ContainsCurrentUser")
+                .Returns<bool>();
+            builder.EntityType<Response>().Collection
                 .Function("Summary")
                 .Returns<ResponseSummary>();
 

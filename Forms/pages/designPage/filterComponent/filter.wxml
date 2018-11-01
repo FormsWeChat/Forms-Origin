@@ -7,18 +7,18 @@
   <view class="sort-by-container">
     <text class="filter-text">Sort by</text>
     <view class="sort-button-group">
-      <button wx:if="{{orderBy !== 'Service'}}" class="sort-by-it left" 
-        bindtap='clickService' id="Service">Service</button>
+      <button wx:if="{{orderBy !== 'ServiceScore'}}" class="sort-by-it left" 
+        bindtap='clickService' id="ServiceScore">Service</button>
       <button wx:else class="sort-by-it-checked left" 
-        bindtap='clickService' id="Service">Service</button>
-      <button wx:if="{{orderBy !== 'Tasty'}}" class="sort-by-it" 
-        bindtap='clickTasty' id="Tasty">Tasty</button>
+        bindtap='clickService' id="ServiceScore">Service</button>
+      <button wx:if="{{orderBy !== 'TasteScore'}}" class="sort-by-it" 
+        bindtap='clickTasty' id="TasteScore">Tasty</button>
       <button wx:else class="sort-by-it-checked" 
-        bindtap='clickTasty' id="Tasty">Tasty</button>
-      <button wx:if="{{orderBy !== 'Environment'}}" class="sort-by-it right" 
-        bindtap='clickEnvironment' id="Environment">Environment</button>
+        bindtap='clickTasty' id="TasteScore">Tasty</button>
+      <button wx:if="{{orderBy !== 'EnvScore'}}" class="sort-by-it right" 
+        bindtap='clickEnvironment' id="EnvScore">Environment</button>
       <button wx:else class="sort-by-it-checked right" 
-        bindtap='clickEnvironment' id="Environment">Environment</button>
+        bindtap='clickEnvironment' id="EnvScore">Environment</button>
     </view>
     </view>
   <view class="price-range-container">
