@@ -9,6 +9,7 @@ Page({
    */
   data: {
     formId:"",
+    getFormUrl: "http://miniforms.azurewebsites.net/Forms",
     pageHeight: "95%",
     itemHeight: "80%",
     Mode: "runtime",
@@ -25,7 +26,7 @@ Page({
       return
     }
     let index = this.data.Options.findIndex((item) => {
-      return item.title === e.currentTarget.id;
+      return item.Choices.Id === e.currentTarget.id;
     })
     this.data.Options[index].click = true;
     this.setData({
@@ -33,29 +34,27 @@ Page({
     })
   },
   onVote: function(e) {
+    var that = this;
     // Vote ongoing
     this.setData({ voteStatus: "1"});
 
     var formId = this.data.formId;
-
-    // TODO: get choice id
-    var choiceId="asd";
-
     wx.getStorage({
       key: 'Id',
       success: function (res) {
       wx.request({
         url: config.resultUrl + '\'' + formId + '\'' + ')/Responses',
+        method: 'POST',
         data: {
           ResponderId:res.data,
-          ChoiceId: choiceId,
+          ChoiceId: e.currentTarget.id,
         },
 
-        sucess: function(res) {
+        success: function(res) {
           console.log("Vote success!");
 
           // Vote complete
-          this.setData({ voteStatus: "2" });
+          that.setData({ voteStatus: "2" });
           wx.redirectTo({
             url: '../resultPage/analysisPage?formId=' + formId,
           })
@@ -88,15 +87,21 @@ Page({
       })
     }
     var that = this;
-    wx.getStorage({
-      key: 'Title',
-      success: function (res) {
-        that.setData({
-          Title: res.data,
-        })
-      },
-      fail: function (res) {
-        console.log(res,'Load title fail')
+    wx.request({
+      url: this.data.getFormUrl + "('"+this.data.formId+"')?$expand=Questions($expand=Choices($expand=Shop))",
+      method: 'GET',
+      success(res) {
+        console.log(res.data)
+        if(res.data.Questions.length > 0) {
+          let newOptions = res.data.Questions[0].Choices.map((item) => {
+            return {click: false, Choices: item}
+          })
+          that.setData({
+            Options: newOptions,
+            Title: res.data.Questions[0].Description
+          })
+        }
+        
       }
     })
   },

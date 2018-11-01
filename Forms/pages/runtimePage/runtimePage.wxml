@@ -1,25 +1,26 @@
 <!--pages/runtimePage/runtimePage.wxml-->
 <template name="swiper-item">
 <swiper-item class="swiper-item" bindtouchmove='touchMove'>
-  <view class="swiper-item-container" style='height:{{itemHeight}};'bindtap='onSwiperItem' id="{{title}}">
-    <view class="image-container"><image class="swiper-item-image" src="{{image}}"/></view>
+  <view class="swiper-item-container" style='height:{{itemHeight}};'bindtap='onSwiperItem' id="{{Choices.Id}}">
+    <view class="image-container"><image class="swiper-item-image" src="{{Choices.Shop.ImageHref}}"/></view>
     <view class="information-container">
       <view class="title-container">
-        <text class="title">{{title}}</text>
-        <text class="distance">{{distance}}</text>
+        <text class="title">{{Choices.Shop.ShopTitle}}</text>
+        <text class="distance">{{Choices.Shop.Distance}}M</text>
       </view>
       <view class="rating-comment-price">
-        <text class="rating-information">Rating：{{rating}}</text>
-        <text class="comment-information">{{comments}} Items</text>
-        <text class="price-information">${{price}}/person</text>
+        <text class="rating-information">Rating：{{Choices.Shop.EnvScore
+}}</text>
+        <text class="comment-information">{{Choices.Shop.CommentsNumber}} Items</text>
+        <text class="price-information">${{Choices.Shop.AveragePrice}}/person</text>
       </view>
       <view>
-        <text class="type-information">{{type}}</text>
+        <text class="type-information">{{Choices.Shop.Address}}</text>
       </view>
     </view>
   </view>
   <view wx:if="{{click}}" class="vote-button-container">
-    <button class="vote-button" bindtap='onVote' id='{{title}}' disabled='{{voteStatus == 1}}'>Vote</button>
+    <button class="vote-button" bindtap='onVote' id='{{Choices.Id}}' disabled='{{voteStatus == 1}}'>Vote</button>
   </view>
 </swiper-item>
 </template>
@@ -29,7 +30,7 @@
   <view class="swiper-container">
     <swiper style='width:100%;height:{{pageHeight}}'
           indicator-dots previous-margin="37px" next-margin="7px">
-          <block wx:for="{{Options}}" wx:key="Options{{Title}}">
+          <block wx:for="{{Options}}">
             <template is="swiper-item" data="{{...item, itemHeight}}"></template>
           </block>
     </swiper>

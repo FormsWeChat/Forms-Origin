@@ -1,4 +1,4 @@
-<view wx:if="{{loadData==1}}" class="page">
+<view wx:if="{{loadData==1 && vote.Items[0]!=null}}" class="page">
     <view class="page__hd">
         <text class="page__title">Where should we eat?</text>
     </view>
@@ -32,6 +32,10 @@
     </view>
 </view>
 
-    <view wx:elif="{{loadData==0}}" class="Loading_view">
-     <loading>加载中</loading>
-    </view>
+<view wx:elif="{{loadData==0}}" class="Loading_view">
+<loading>加载中</loading>
+</view>
+
+<view wx:elif="{{vote.Items[0]==null}}" class="Empty_view">
+<text class='error_text'>Sorry, something get wrong.</text>
+</view>

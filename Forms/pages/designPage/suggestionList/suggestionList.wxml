@@ -17,10 +17,12 @@
     <text class="title"> Suggested options</text>
     <button class="filterButton" bindtap='onFilter'>Filter</button>
   </view>
-
-  <scroll-view scroll-y wx:for="{{restaurants}}" wx:key="{{restaurants}}" class="list-container">
-    <template is="item-suggest" data="{{...item}}"> </template>
+  <scroll-view scroll-y class="scroll-suggest-list">
+    <view wx:for="{{restaurants}}" wx:key="{{restaurants}}" class="list-container">
+      <template is="item-suggest" data="{{...item}}"> </template>
+    </view>
   </scroll-view>
+  
 </view>
 
 <view wx:elif="{{loadData==0}}" class="Loading_view">

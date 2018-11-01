@@ -24,7 +24,7 @@ Page({
   },
   onClickStart: function () {
     wx.redirectTo({
-      url: '../runtimePage/runtimePage',
+      url: '../designPage/designPage',
     })
   },
 
