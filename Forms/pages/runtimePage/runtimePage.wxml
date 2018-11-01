@@ -19,7 +19,7 @@
     </view>
   </view>
   <view wx:if="{{click}}" class="vote-button-container">
-    <button class="vote-button" bindtap='onVote' id='{{title}}'>Vote</button>
+    <button class="vote-button" bindtap='onVote' id='{{title}}' disabled='{{voteStatus == 1}}'>Vote</button>
   </view>
 </swiper-item>
 </template>
@@ -40,4 +40,8 @@
     </view>
     </view>
   </view>
+
+  <view wx:if="{{voteStatus==1}}" class="Loading_view">
+     <loading>Voting</loading>
+    </view>
 </view>

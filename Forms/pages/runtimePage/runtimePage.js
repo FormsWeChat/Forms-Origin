@@ -1,3 +1,6 @@
+
+var config = require('../../utils/config.js');
+
 // pages/runtimePage/runtimePage.js
 Page({
 
@@ -9,6 +12,7 @@ Page({
     pageHeight: "95%",
     itemHeight: "80%",
     Mode: "runtime",
+    voteStatus: "0",
     Title:"",
     Options:[
       {title:"Restaurant name A", image:"../../images/cat.jpg", distance:"300M", rating: 4, comments: 199987, price: 94, type: "Western Style", click: false},
@@ -29,11 +33,39 @@ Page({
     })
   },
   onVote: function(e) {
+    // Vote ongoing
+    this.setData({ voteStatus: "1"});
+
     var formId = this.data.formId;
-    wx.redirectTo({
-      url: '../resultPage/analysisPage?formId=' + formId,
+
+    // TODO: get choice id
+    var choiceId="asd";
+
+    wx.getStorage({
+      key: 'Id',
+      success: function (res) {
+      wx.request({
+        url: config.resultUrl + '\'' + formId + '\'' + ')/Responses',
+        data: {
+          ResponderId:res.data,
+          ChoiceId: choiceId,
+        },
+
+        sucess: function(res) {
+          console.log("Vote success!");
+
+          // Vote complete
+          this.setData({ voteStatus: "2" });
+          wx.redirectTo({
+            url: '../resultPage/analysisPage?formId=' + formId,
+          })
+        }
+      });
+
+       },
     })
   },
+
   touchMove: function(e) {
     this.data.Options.forEach((item) => {
       item.click = false
