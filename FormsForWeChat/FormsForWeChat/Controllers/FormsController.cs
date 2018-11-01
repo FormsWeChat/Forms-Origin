@@ -219,7 +219,7 @@ namespace FormsForWeChat.Controllers
 
             TableQuery<TableEntityAdapter<Response>> queryResponses = new TableQuery<TableEntityAdapter<Response>>().Where(TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, formId));
             var responses = ResponseTable.ExecuteQuery(queryResponses)?.Select(result => result.OriginalEntity);
-            if (responses != null && responses.Count() == 0)
+            if (responses != null && responses.Count() != 0)
             {
                 foreach(var group in responses.GroupBy(response => response.ChoiceId))
                 {
