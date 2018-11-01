@@ -26,12 +26,15 @@
 
 <view class="container">
 <view class="runtime-title">{{Title}}</view>
-<view class="swiper-container">
-  <swiper style='width:100%;height:{{pageHeight}}'
-        indicator-dots previous-margin="37px" next-margin="7px">
-        <block wx:for="{{Options}}" wx:key="Options{{Title}}">
-          <template is="swiper-item" data="{{...item, itemHeight}}"></template>
-        </block>
-      </swiper>
-</view>
+  <view class="swiper-container">
+    <swiper style='width:100%;height:{{pageHeight}}'
+          indicator-dots previous-margin="37px" next-margin="7px">
+          <block wx:for="{{Options}}" wx:key="Options{{Title}}">
+            <template is="swiper-item" data="{{...item, itemHeight}}"></template>
+          </block>
+    </swiper>
+    <view wx:if="{{Mode=='preview'}}" class="share-button-container">
+      <button class="share-button" bindtap='onShareButton'>Share</button>
+    </view>
+  </view>
 </view>

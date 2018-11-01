@@ -72,11 +72,19 @@
   padding-left: 2%;
 }
 
-.detail {
-  padding-left: 2%
+.com-rating {
+  font-size: 1em;
 }
+
+.detail {
+  padding-left: 2%;
+  color: #a8a8a8;
+}
+
 .detail .title {
   font-size: 70%;
+  color: #333333;
+  padding-top: 2%;
 }
 
 .option {

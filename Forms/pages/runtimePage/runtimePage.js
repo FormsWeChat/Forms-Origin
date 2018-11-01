@@ -5,7 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    pageHeight: "100%",
+    pageHeight: "95%",
     itemHeight: "80%",
     Mode: "runtime",
     Title:"",
@@ -41,12 +41,16 @@ Page({
     })
   },
 
+  onShareButton: function(e) {
+    this.onShareAppMessage();
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     if(options.Mode && options.Mode === "preview") {
-      this.setData({ Mode: "preview", pageHeight: "90%", itemHeight: "100%"})
+      this.setData({ Mode: "preview", pageHeight: "85%", itemHeight: "85%"})
     }
     var that = this;
     wx.getStorage({
