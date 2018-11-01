@@ -9,7 +9,12 @@ Page({
     showBottom: "title",
   },
   //事件处理函数
-
+  finishInput: function (e) {
+    wx.setStorage({
+      key: 'suggestionFilterKeyword',
+      data: e.detail.value,
+    })
+  },
 
   onAddOptionsButton: function (e) {
     let newOptions = this.data.Options;
