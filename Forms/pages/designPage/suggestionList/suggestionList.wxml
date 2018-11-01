@@ -7,7 +7,7 @@
       <text class="title">{{ShopTitle}}</text>
       <template is='rating' data='{{rating:StarNet,max:50}}'></template>
       <text class="comments"><block>{{CommentsNumber}} items</block></text>
-      <text class="price"><block> ${{AveragePrice}} /person </block></text>
+      <text class="price"><block> ￥{{AveragePrice}} /person </block></text>
     </view>
   </view>
 </template>
@@ -26,5 +26,5 @@
 </view>
 
 <view wx:elif="{{loadData==0}}" class="Loading_view">
-  <loading>加载中</loading>
+  <loading>Loading</loading>
 </view>

@@ -23,7 +23,7 @@
         <text class="title">{{title}}</text>
         <template is='rating' data='{{rating:rate,max:5}}'></template>
         <text class="comments"><block> {{comments}} items</block></text>
-        <text class="price"><block> ${{price}}/person </block></text>
+        <text class="price"><block> ￥{{price}}/person </block></text>
       </view>
     </view>
   </view>

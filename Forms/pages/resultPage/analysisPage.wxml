@@ -34,7 +34,7 @@
 </view>
 
 <view wx:elif="{{loadData==0}}" class="Loading_view">
-<loading>加载中</loading>
+<loading>Loading</loading>
 </view>
 
 <view wx:elif="{{vote.Items[0]==null}}" class="Empty_view">
