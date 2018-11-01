@@ -38,15 +38,15 @@ Page({
     if (e.detail.eventType === "button") {
       let newOptions = this.data.Options;
       let optionLength = newOptions.length;
-      newOptions[optionLength - 1] = {
+      newOptions[optionLength - 1] = { 
         image: e.detail.item.image,  
-        Text: e.detail.item.title, 
+        Text: e.detail.item.ShopTitle, 
         Card: true, 
         DoneInput: false, 
-        title: e.detail.item.title, 
-        rate: e.detail.item.rate, 
-        comments: e.detail.item.comments, 
-        price: e.detail.item.price
+        title: e.detail.item.ShopTitle, 
+        rate: e.detail.item.StarNet, 
+        comments: e.detail.item.CommentsNumber, 
+        price: e.detail.item.AveragePrice
       }
       this.setData({
         Options: newOptions,
@@ -65,6 +65,8 @@ Page({
       Title: e.detail.Title,
       showBottom: "suggestion"
     });
+    const component = this.selectComponent('#suggestion-List');
+    component.onLoad();
   },
 
   backToSuggestion: function (e) {
