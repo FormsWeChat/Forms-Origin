@@ -1,4 +1,4 @@
-<view class="page">
+<view wx:if="{{loadData==1}}" class="page">
     <view class="page__hd">
         <text class="page__title">Where should we eat?</text>
     </view>
@@ -8,7 +8,7 @@
             <block wx:for="{{vote.Items}}" wx:for-index="idx" wx:for-item="item" class="vote_item_block">
                <view class="vote_item_title">{{item.ShopTitle}}<span class="item_count_span">({{item.Count}})</span></view>
 
-                <progress class="vote_item_progress" percent="{{100*item.Count/vote.Total}}" stroke-width="10" activeColor='#008272' />
+                <progress class="vote_item_progress" percent="{{100*item.Count/vote.Total}}" stroke-width="10" activeColor='#008272'/>
 
                 <view class="vote_image_views">
                     <view wx:for="{{item.ResponderAvatarUrls}}" wx:for-index="iidx" wx:for-item="vimage" class="vote_image_view">
@@ -28,7 +28,10 @@
             <button class="booking_button" hover-class="booking_button_hover" bindtap="orderPhoneCall">Booking({{vote.WinnerTitle}})</button>
         </view>
     </view>
-
     <view class="page_footer">
     </view>
 </view>
+
+    <view wx:elif="{{loadData==0}}" class="Loading_view">
+     <loading>加载中</loading>
+    </view>
