@@ -31,7 +31,7 @@ Page({
 
   onDoneButton: function(e) {
     wx.navigateTo({
-      url: '../runtimePage/runtimePage?Mode=preview',
+      url: '../runtimePage/runtimePage?Mode=preview&formId='+this.data.formId,
     })
   },
 
@@ -144,7 +144,7 @@ Page({
   onShareAppMessage: function onShareAppMessage() {
     return {
       title: 'Where should we eat?',
-      path: '/pages/runtimePage/runtimePage?Mode=runtime?formId='+this.data.formId
+      path: '/pages/runtimePage/runtimePage?Mode=runtime&formId='+this.data.formId
     }
   },
 })
