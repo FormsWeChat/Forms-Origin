@@ -97,7 +97,7 @@ namespace FormsForWeChat.Controllers
         {
             form.Id = Guid.NewGuid().ToString();
             // Create the TableOperation object that inserts the customer entity.
-            TableOperation insertOperation = TableOperation.Insert(new TableEntityAdapter<Form>(form, form.OwnerId, form.Id));
+            TableOperation insertOperation = TableOperation.Insert(new TableEntityAdapter<Form>(form, form.OwnerId??"test", form.Id));
 
             // Execute the operation.
             FormTable.Execute(insertOperation);
