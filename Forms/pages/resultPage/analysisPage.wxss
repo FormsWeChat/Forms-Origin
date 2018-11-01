@@ -79,7 +79,14 @@
     background-color: #008272;
     color: #FFFFFF;
     text-align: center;
-    overflow: ellipsis;
+}
+
+.booking_button_text {
+  max-width: 200px;
+  overflow: hidden;
+  white-space: nowrap;
+  display: inline-block;
+  text-overflow: ellipsis;
 }
 
 .booking_button_hover {
