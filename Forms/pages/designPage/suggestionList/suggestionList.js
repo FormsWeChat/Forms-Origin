@@ -1,3 +1,5 @@
+var config = require('../../../utils/config.js');
+
 Component({
   data: {
     title: '',
@@ -23,7 +25,7 @@ Component({
     loadMore: function loadMore() {
       var _this = this;
 
-      if (!this.data.hasMore) return;
+    //  if (!this.data.hasMore) return;
 
       //this.setData({ subtitle: '加载中...', loading: true });
 
@@ -42,6 +44,17 @@ Component({
       //   restaurants: ["Nan Jing Da Pai Dang", "Zhong 8 Lou"],
       //   loading: false
       // });
+     
+      wx.request({
+        url: config.shopUrl,
+        data: {
+        },
+
+        success: function (res) {
+          console.log(res.data)
+
+        }
+      });
     },
 
     /**
