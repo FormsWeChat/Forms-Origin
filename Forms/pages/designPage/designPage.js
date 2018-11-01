@@ -1,3 +1,5 @@
+var config = require('../../utils/config.js');
+
 Page({
   data: {
     createFormUrl:"http://miniforms.azurewebsites.net/Forms",

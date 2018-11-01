@@ -1,13 +1,15 @@
 //index.js
 //获取应用实例
+var config = require('../../utils/config.js');
+
 const app = getApp()
 
 Page({
   data: {
     width: 0,
     height: 0,
-    src: '../../images/welcome4.png',
-
+    //src: './welcomebase64.png',
+    src: config.welcomeBase64,
     motto: 'Hello World',
     userInfo: {},
     hasUserInfo: false,

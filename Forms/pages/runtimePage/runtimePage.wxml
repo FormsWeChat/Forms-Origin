@@ -9,10 +9,9 @@
         <text class="distance">{{Choices.Shop.Distance}}M</text>
       </view>
       <view class="rating-comment-price">
-        <text class="rating-information">Rating：{{Choices.Shop.EnvScore
-}}</text>
+        <text class="rating-information">Rating：{{Choices.Shop.StarNet/10.0}}</text>
         <text class="comment-information">{{Choices.Shop.CommentsNumber}} Items</text>
-        <text class="price-information">${{Choices.Shop.AveragePrice}}/person</text>
+        <text class="price-information">￥{{Choices.Shop.AveragePrice}}/person</text>
       </view>
       <view>
         <text class="type-information">{{Choices.Shop.Address}}</text>

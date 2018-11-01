@@ -250,6 +250,18 @@ namespace FormsForWeChat.Controllers
             return Ok(summary);
         }
 
+        [HttpGet]
+        [ODataRoute("Forms({formId})/Responses/ContainsCurrentUser")]
+        public IHttpActionResult ContainsCurrentUser([FromODataUri] string formId)
+        {
+            var userId = Request.Headers.Authorization?.Parameter.Split(':')?[0] ?? string.Empty;
+
+            string tableFilter = TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, formId);
+            string responderFilter = TableQuery.GenerateFilterCondition("ResponderId", QueryComparisons.Equal, userId);
+            TableQuery<TableEntityAdapter<Response>> queryResponses = new TableQuery<TableEntityAdapter<Response>>().Where(TableQuery.CombineFilters(tableFilter, TableOperators.And, responderFilter));
+            return Ok(ResponseTable.ExecuteQuery(queryResponses).Count() != 0);
+        }
+
         #endregion Responses Operations
     }
 }

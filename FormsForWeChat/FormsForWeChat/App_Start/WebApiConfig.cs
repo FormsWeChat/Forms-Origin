@@ -25,7 +25,11 @@ namespace FormsForWeChat
             builder.EntitySet<Shop>("Shops");
             builder.EntitySet<User>("Users");
             builder.Action("SignIn").Parameter<string>("code");
+            builder.Action("SetAvatar").Parameter<string>("avatarUrl");
 
+            builder.EntityType<Response>().Collection
+                .Function("ContainsCurrentUser")
+                .Returns<bool>();
             builder.EntityType<Response>().Collection
                 .Function("Summary")
                 .Returns<ResponseSummary>();

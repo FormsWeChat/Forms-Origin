@@ -105,5 +105,36 @@ namespace FormsForWeChat.Controllers
             }
             return BadRequest();
         }
+
+        [HttpPost]
+        [ODataRoute("SetAvatar")]
+        public IHttpActionResult SetAvatar(ODataActionParameters parameters)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+
+            var userId = Request.Headers.Authorization.Parameter.Split(':')[0];
+
+            string avatarUrl = (string)parameters["avatarUrl"];
+
+            TableOperation retrieveOperation = TableOperation.Retrieve<TableEntityAdapter<User>>("User", userId);
+            TableResult retrievedResult = UserTable.Execute(retrieveOperation);
+
+            TableEntityAdapter<User> userEntity = (TableEntityAdapter<User>)retrievedResult.Result;
+
+            if (userEntity != null)
+            {
+                userEntity.OriginalEntity.AvatarUrl = avatarUrl;
+                TableOperation updateOperation = TableOperation.Replace(userEntity);
+                UserTable.Execute(updateOperation);
+                return Ok();
+            }
+            else
+            {
+                return BadRequest("User does not exist.");
+            }
+        }
     }
 }

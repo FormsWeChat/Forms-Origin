@@ -22,7 +22,7 @@
     </view>
     </view>
   <view class="price-range-container">
-    <text class="filter-text">Price range:  ${{choseMinPrice}} - ${{choseMaxPrice}}</text>
+    <text class="filter-text">Price range: {{choseMinPrice}} - {{choseMaxPrice}}</text>
     <view class="zy-slider">
       <zy-slider minValue="{{minPrice}}" maxValue="{{maxPrice}}" min="0" max="300" 
         selectedColor="#008272" blockColor="#008272" bind:lowValueChange="lowValueChangeAction"

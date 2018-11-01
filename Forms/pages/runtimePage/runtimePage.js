@@ -8,6 +8,9 @@ Page({
    * 页面的初始数据
    */
   data: {
+    Responded: false,
+    Id: "",
+    SignInHash: "",
     formId:"",
     getFormUrl: "http://miniforms.azurewebsites.net/Forms",
     pageHeight: "95%",
@@ -78,6 +81,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    let that = this
     if(options.Mode && options.Mode === "preview") {
       this.setData({ Mode: "preview", pageHeight: "85%", itemHeight: "85%"})
     }
@@ -86,7 +90,38 @@ Page({
         formId: options.formId
       })
     }
-    var that = this;
+    let id = ""
+    wx.getStorage({
+      key: 'SignInHash',
+      success: function(res) {
+        that.setData({
+          SignInHash: res.data
+        })
+        wx.getStorage({
+          key: 'Id',
+          success: function(res) {
+            that.setData({
+              Id: res.data
+            })
+            wx.request({
+              url: that.data.getFormUrl + "('" + that.data.formId + "')/Responses/ContainsCurrentUser",
+              method: 'GET',
+              header: {
+                Authorization: "eihei " + that.data.Id + ":" + that.data.SignInHash,
+              },
+              success(res) {
+                if(res.data.value) {
+                  wx.redirectTo({
+                    url: '../resultPage/analysisPage?formId=' + that.data.formId,
+                  })
+                }
+              }
+            })
+          },
+        })
+      },
+    })
+    
     wx.request({
       url: this.data.getFormUrl + "('"+this.data.formId+"')?$expand=Questions($expand=Choices($expand=Shop))",
       method: 'GET',
@@ -154,7 +189,7 @@ Page({
   onShareAppMessage: function onShareAppMessage() {
     return {
       title: 'Where should we eat?',
-      path: '/pages/runtimePage/runtimePage'
+      path: '/pages/runtimePage/runtimePage?Mode=runtime&formId='+this.data.formId
     }
   },
 })
