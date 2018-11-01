@@ -9,12 +9,12 @@ Component({
     page: 1,
     size: 20,
     restaurants: [
-      { title: "Nan Jing Da Pai Dang", image: "../../../images/cat.jpg", comments: "1000", price: "$98/person", rate: 4 },
-      { title: "Zhong 8 Lou", image: "../../../images/cat.jpg", comments: "1000", price: "$98/person", rate: 3 },
+      // { Id:"", "Nan Jing Da Pai Dang", image: "../../../images/cat.jpg", comments: "1000", price: "$98/person", rate: 4 },
+      // { title: "Zhong 8 Lou", image: "../../../images/cat.jpg", comments: "1000", price: "$98/person", rate: 3 },
     ],
-    Options: [
-      { Text: "Option1"}
-    ],
+    Options: [{
+      Text: "Option1"
+    }],
     Sort: '',
     MinPrice: '',
     MaxPrice: '',
@@ -25,30 +25,32 @@ Component({
      * 生命周期函数--监听页面加载
      */
     onLoad: function onLoad() {
-
+      var that = this;
       wx.request({
-        url: config.shopUrl,
-        data: {
-        },
+          url: config.shopUrl + '?$top=5',
+          data: {},
 
-        success: function (res) {
-          console.log(res.data)
+          success: function(res) {
+            console.log(res.data)
+            that.setData({
+              restaurants: res.data.value,
+              loadData: "1"
+            });
+          }
+        }),
 
-        }
-      })
-
-      wx.getStorage({
-        key: 'Sort',
-        success: res => {
-          console.log(res.data);
-          this.setData({
-            Sort: res.data
-          })
-        }
-      })
+        wx.getStorage({
+          key: 'Sort',
+          success: res => {
+            console.log(res.data);
+            this.setData({
+              Sort: res.data
+            })
+          }
+        })
       wx.getStorage({
         key: 'MinPrice',
-        success:res => {
+        success: res => {
           console.log(res.data);
           this.setData({
             MinPrice: res.data
@@ -67,7 +69,7 @@ Component({
 
     },
 
-    attached: function () {
+    attached: function() {
       // Do something when page show.
       wx.getStorage({
         key: 'Sort',
@@ -89,38 +91,75 @@ Component({
       })
     },
     /**
-     * 页面相关事件处理函数--监听用户下拉动作
+     * Lifecycle function--Called when page is initially rendered
      */
-    onPullDownRefresh: function onPullDownRefresh() {
-      this.setData({
-        restaurant: [],
-        page: 1,
-        hasMore: true
-      });
-      this.loadMore().then(function() {
-        return app.wechat.original.stopPullDownRefresh();
-      });
-    },
-    onReachBottom: function onReachBottom() {
-      this.loadMore();
+    onReady: function() {
+
     },
 
-    onSuggestButton: function (e) {
+    /**
+     * Lifecycle function--Called when page show
+     */
+    onShow: function() {
+
+    },
+
+    /**
+     * Lifecycle function--Called when page hide
+     */
+    onHide: function() {
+
+    },
+
+    /**
+     * Lifecycle function--Called when page unload
+     */
+    onUnload: function() {
+
+    },
+
+    /**
+     * Page event handler function--Called when user drop down
+     */
+    onPullDownRefresh: function() {
+
+    },
+
+    /**
+     * Called when page reach bottom
+     */
+    onReachBottom: function() {
+
+    },
+
+    /**
+     * Called when user click on the top right corner to share
+     */
+    onShareAppMessage: function() {
+
+    },
+
+    onSuggestButton: function(e) {
       let item;
       this.data.restaurants.forEach(element => {
-          if (element.title === e.currentTarget.id) {
-            item = element;
-            return true;
-          }
+        if (element.Id === e.currentTarget.id) {
+          item = element;
+          return true;
+        }
       });
-      var myEventDetail = { eventType: "button", item: item} // detail对象，提供给事件监听函数
+      var myEventDetail = {
+        eventType: "button",
+        item: item
+      } // detail对象，提供给事件监听函数
       console.log(e)
       var myEventOption = {} // 触发事件的选项
       this.triggerEvent('myevent', myEventDetail, myEventOption)
     },
 
-    onFilter: function (e) {
-      var myEventDetail = { eventType: "filter" } // detail对象，提供给事件监听函数
+    onFilter: function(e) {
+      var myEventDetail = {
+        eventType: "filter"
+      } // detail对象，提供给事件监听函数
       var myEventOption = {} // 触发事件的选项
       this.triggerEvent('myevent', myEventDetail, myEventOption)
     },
