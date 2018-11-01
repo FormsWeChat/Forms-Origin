@@ -19,6 +19,7 @@ namespace FormsForWeChat.Controllers
         private CloudTable QuestionTable = null;
         private CloudTable ChoiceTable = null;
         private CloudTable ResponseTable = null;
+        private CloudTable ShopTable = null;
 
         public FormsController() : base()
         {
@@ -34,6 +35,7 @@ namespace FormsForWeChat.Controllers
             QuestionTable = tableClient.GetTableReference("Questions");
             ChoiceTable = tableClient.GetTableReference("Choices");
             ResponseTable = tableClient.GetTableReference("Responses");
+            ShopTable = tableClient.GetTableReference("Shops");
         }
 
         #region Forms Operations
@@ -60,17 +62,29 @@ namespace FormsForWeChat.Controllers
             // Execute the retrieve operation.
             TableResult retrievedResult = FormTable.Execute(retrieveOperation);
 
-            if (retrievedResult == null)
+            if (retrievedResult?.Result == null)
             {
                 return NotFound();
             }
 
-            TableQuery<TableEntityAdapter<Question>> query = new TableQuery<TableEntityAdapter<Question>>().Where(TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, formId));
-
             var form = ((TableEntityAdapter<Form>)retrievedResult.Result).OriginalEntity;
-            foreach (var question in QuestionTable.ExecuteQuery(query).Select(result => result.OriginalEntity))
+
+            TableQuery<TableEntityAdapter<Question>> queryQuestions = new TableQuery<TableEntityAdapter<Question>>().Where(TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, formId));
+            var questions = QuestionTable.ExecuteQuery(queryQuestions).Select(result => result.OriginalEntity);
+            if (questions != null)
             {
-                form.Questions.Add(question);
+                TableQuery<TableEntityAdapter<Choice>> queryChoices = new TableQuery<TableEntityAdapter<Choice>>().Where(TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, formId));
+                var choices = ChoiceTable.ExecuteQuery(queryChoices).Select(result => result.OriginalEntity);
+                foreach (var question in questions)
+                {
+                    question.Choices = choices?.Where(choice => choice.QuestionId == question.Id).ToList();
+                    foreach (var choice in question.Choices)
+                    {
+                        TableOperation shopRetrieveOperation = TableOperation.Retrieve<TableEntityAdapter<Shop>>("zgc", choice.ShopId);
+                        choice.Shop = ((TableEntityAdapter<Shop>)ShopTable.Execute(shopRetrieveOperation).Result)?.OriginalEntity;
+                    }
+                    form.Questions.Add(question);
+                }
             }
 
             return Ok(form);

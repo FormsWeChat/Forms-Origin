@@ -2,7 +2,7 @@
 
 <template name="item-suggest">
   <view class="item-suggest-button" bindtap='onSuggestButton' id="{{title}}">
-    <image class="itemImage" src="/../../images/cat.jpg" mode="aspectFill" />
+    <image class="itemImage" src='{{image}}' mode="aspectFill" />
     <view class="detail">
       <text class="title">{{title}}</text>
        <template is='rating' data='{{rating:rate,max:5}}'></template>
@@ -18,7 +18,7 @@
   </view>
   <view wx:else class="suggestionContainer">
     <view class="item-suggest-button" bindtap='onSuggestButton' id="{{title}}">
-      <image class="itemImage" src="/../../images/cat.jpg" mode="aspectFill" />
+      <image class="itemImage" src='{{image}}' mode="aspectFill" />
       <view class="detail">
         <text class="title">{{title}}</text>
         <template is='rating' data='{{rating:rate,max:5}}'></template>

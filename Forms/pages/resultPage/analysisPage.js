@@ -9,6 +9,7 @@ Page({
    */
   data: {
     vote:{},
+    loadData:"0",
     // Mock vote data
     /*
     vote:
@@ -152,7 +153,8 @@ Page({
        success: function(res) {
          console.log( res.data )
          that.setData( {
-           vote: res.data
+           vote: res.data,
+           loadData: "1"
            });
            }
        });
