@@ -4,6 +4,10 @@ const app = getApp()
 
 Page({
   data: {
+    width: 0,
+    height: 0,
+    src: '../../images/welcome.png',
+
     motto: 'Hello World',
     userInfo: {},
     hasUserInfo: false,
@@ -20,11 +24,21 @@ Page({
   },
   onClickStart: function () {
     wx.redirectTo({
-      url: '../resultPage/analysisPage',
+      url: '../runtimePage/runtimePage',
     })
   },
 
   onLoad: function () {
+    var _this = this;
+    wx.getSystemInfo({
+      success: function success(res) {
+        _this.setData({
+          width: res.windowWidth,
+          height: res.windowHeight
+        });
+      }
+    });  
+
     if (app.globalData.userInfo) {
       console.log(app.globalData.userInfo);
       this.setData({
