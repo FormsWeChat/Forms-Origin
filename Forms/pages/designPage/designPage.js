@@ -58,6 +58,10 @@ Page({
         Options: newOptions,
         showBottom: "suggestion"
       })
+
+      const component = this.selectComponent('#suggestion-List');
+      component.onLoad();
+
       let createOptionUrl = this.data.createFormUrl+"('"+this.data.formId+"')/Questions('"+this.data.questionId+"')/Choices"
       let order = newOptions.length - 1
       let that = this
