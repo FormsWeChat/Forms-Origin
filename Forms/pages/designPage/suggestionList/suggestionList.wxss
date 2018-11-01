@@ -73,14 +73,12 @@
   display: inline-block;
 }
 .com-rating .rating-on {
-  color: rgb(223, 41, 41);
   position: absolute;
   overflow: hidden;
   padding: 0;
   margin: 0;
 }
 .com-rating .rating-off {
-  color: #DBDBDB;
   padding: 0;
   margin: 0;
 }

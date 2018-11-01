@@ -1,9 +1,31 @@
-<!--index.wxml-->
+<import src='../rating/rating' />
 
+<template name="item-suggest">
+  <view class="item-suggest-button" bindtap='onSuggestButton' id="{{title}}">
+    <image class="itemImage" src="/../../images/cat.jpg" mode="aspectFill" />
+    <view class="detail">
+      <text class="title">{{title}}</text>
+       <template is='rating' data='{{rating:rate,max:5}}'></template>
+      <text class="comments"><block>{{comments}} items</block></text>
+      <text class="price"><block> {{price}} </block></text>
+    </view>
+  </view>
+</template>
 
 <template name="option-item">
-  <view class="option">
+  <view wx:if="{{!Card}}" class="option">
     <input class="option-input" placeholder='{{Text}}'/>
+  </view>
+  <view wx:else class="suggestionContainer">
+    <view class="item-suggest-button" bindtap='onSuggestButton' id="{{title}}">
+      <image class="itemImage" src="/../../images/cat.jpg" mode="aspectFill" />
+      <view class="detail">
+        <text class="title">{{title}}</text>
+        <template is='rating' data='{{rating:rate,max:5}}'></template>
+        <text class="comments"><block>{{comments}} items</block></text>
+        <text class="price"><block> {{price}} </block></text>
+      </view>
+    </view>
   </view>
 </template>
 
@@ -13,12 +35,14 @@
       <input wx:if="{{Title == ''}}"class="input-title" placeholder='Typing your questions'/>
       <input wx:else class="input-title" value='{{Title}}'> </input>
     </view>
-  </view>
   <view class="div-line"/>
+  </view>
   
 
-  <view class="options-container">
+  <view class="design-container">
+    <scroll-view scroll-y="true" class="options-container">
     <template wx:for="{{Options}}" wx:key="Options{{Text}}" is="option-item" data="{{...item}}"></template>
+    </scroll-view>
     <view class="div-line"/>
     <button class="add-options-button" bindtap='onAddOptionsButton' id="{{}}">Add options
     </button>
@@ -29,7 +53,7 @@
       <suggest-Title bindmyevent="onClickSuggestionTitle"/>
     </view>
     <view wx:if="{{showBottom == 'suggestion'}}">
-      <suggestion-List bindmyevent="onClickSuggestion">
+      <suggestion-List bindmyevent="onClickSuggestion" id="suggestion-List">
       </suggestion-List>
     </view>
     <view wx:if="{{showBottom == 'filter'}}">

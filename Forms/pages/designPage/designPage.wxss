@@ -1,4 +1,5 @@
 /**index.wxss**/
+@import "suggestionList/suggestionList.wxss";
 .container {
   align-items: left;
   padding: 0px;  
@@ -8,14 +9,14 @@
 .title-container {
   padding-top: 30px;
   display: inline-block;
-  width: 80%;
+  width: 100%;
   padding-left: 10%;
   flex-direction: row;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .input-title-container {
-  padding-left: 5px;
+  padding-left: 0.3%;
 }
 
 .input-title{
@@ -27,7 +28,7 @@
   background-color: #F4F4F4;
   align-items: center;
   width: 100%;
-  height: 500px;
+  height: 60%;
 }
 
 .footer {
@@ -36,38 +37,66 @@
   width: 100%;
 }
 
-.options-container {
+.design-container {
   display: inline-block;
   width: 100%;
   height: 200px;
+  margin-left: 10%;
+}
+
+.options-container {
+  max-height: 100px;
 }
 
 .div-line {
   height: 1px;
   background-color: #c4bdbd;
   width: 80%;
-  margin-top: 5px;
-  margin-left: 10%;
+  margin-top: 2%;
+}
+
+.suggestionContainer {
+  border: 1px solid #f4f4f4;
+  padding: 0;
+  margin-top: 2%;
+}
+
+.item-suggest-button {
+  margin-top: 2%;
+  margin-bottom: 2%;
+}
+
+.itemImage {
+  width: 30%;
+  height: 45px;
+  padding-left: 2%;
+}
+
+.detail {
+  padding-left: 2%
+}
+.detail .title {
+  font-size: 70%;
 }
 
 .option {
-  padding-top: 25px;
+  padding-top: 5%;
   width: 80%;
-  padding-left: calc(10% + 5px);
 }
 
 .option-input {
   font-size: 13px;
+  padding-left: 1%;
 }
 
 .add-options-button {
   padding-top: 10px;
   text-align: left;
-  padding-left: calc(10% + 5px);
   border: none;
   background-color: #ffffff;
   color:#008272;
-  font-size: 15px
+  font-size: 13px;
+  padding-left: 1%;
 }
 
 .add-options-button::after {
