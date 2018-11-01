@@ -45,7 +45,7 @@ Page({
       let optionLength = newOptions.length;
       newOptions[optionLength - 1] = { 
         Id: e.detail.item.Id,
-        image: e.detail.item.image,  
+        image: e.detail.item.ImageHref,  
         Text: e.detail.item.ShopTitle, 
         Card: true, 
         DoneInput: false, 
