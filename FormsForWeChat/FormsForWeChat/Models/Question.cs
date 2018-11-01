@@ -18,10 +18,5 @@ namespace FormsForWeChat.Models
 
         [Contained]
         public ICollection<Choice> Choices { get; set; }
-
-        public Question()
-        {
-            Choices = new List<Choice>();
-        }
     }
 }
