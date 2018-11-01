@@ -160,7 +160,7 @@ namespace FormsForWeChat.Controllers
             choice.QuestionId = questionId;
 
             // Create the TableOperation object that inserts the customer entity.
-            TableOperation insertOperation = TableOperation.Insert(new TableEntityAdapter<Choice>(choice, questionId, choice.Id));
+            TableOperation insertOperation = TableOperation.Insert(new TableEntityAdapter<Choice>(choice, formId, choice.Id));
 
             // Execute the operation.
             ChoiceTable.Execute(insertOperation);
