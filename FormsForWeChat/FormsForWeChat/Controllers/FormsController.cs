@@ -20,6 +20,7 @@ namespace FormsForWeChat.Controllers
         private CloudTable ChoiceTable = null;
         private CloudTable ResponseTable = null;
         private CloudTable ShopTable = null;
+        private CloudTable UserTable = null;
 
         public FormsController() : base()
         {
@@ -36,6 +37,7 @@ namespace FormsForWeChat.Controllers
             ChoiceTable = tableClient.GetTableReference("Choices");
             ResponseTable = tableClient.GetTableReference("Responses");
             ShopTable = tableClient.GetTableReference("Shops");
+            UserTable = tableClient.GetTableReference("Users");
         }
 
         #region Forms Operations
@@ -213,32 +215,39 @@ namespace FormsForWeChat.Controllers
         [ODataRoute("Forms({formId})/Responses/Summary")]
         public IHttpActionResult Summary([FromODataUri] string formId)
         {
-            var result = new ResponseSummary();
-            var item1 = new ResponseSummaryItem()
+            var summary = new ResponseSummary();
+
+            TableQuery<TableEntityAdapter<Response>> queryResponses = new TableQuery<TableEntityAdapter<Response>>().Where(TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, formId));
+            var responses = ResponseTable.ExecuteQuery(queryResponses)?.Select(result => result.OriginalEntity);
+            if (responses != null && responses.Count() == 0)
             {
-                ShopTitle = "南京大排档",
-                Count = 4,
-                ResponderAvatarUrls = new List<string>() { "http://a2.att.hudong.com/80/49/01100000000000144733498645188_s.jpg", "http://a2.att.hudong.com/80/49/01100000000000144733498645188_s.jpg", "http://pic1.win4000.com/wallpaper/8/5260ceb4636ec.jpg?down" }
-            };
-            var item2 = new ResponseSummaryItem()
-            {
-                ShopTitle = "那家小馆",
-                Count = 3,
-                ResponderAvatarUrls = new List<string>() { "http://a2.att.hudong.com/80/49/01100000000000144733498645188_s.jpg", "http://a2.att.hudong.com/80/49/01100000000000144733498645188_s.jpg", "http://pic1.win4000.com/wallpaper/8/5260ceb4636ec.jpg?down" }
-            };
-            var item3 = new ResponseSummaryItem()
-            {
-                ShopTitle = "将太无二",
-                Count = 3,
-                ResponderAvatarUrls = new List<string>() { "http://a2.att.hudong.com/80/49/01100000000000144733498645188_s.jpg", "http://a2.att.hudong.com/80/49/01100000000000144733498645188_s.jpg", "http://pic1.win4000.com/wallpaper/8/5260ceb4636ec.jpg?down" }
-            };
-            result.Items.Add(item1);
-            result.Items.Add(item2);
-            result.Items.Add(item3);
-            result.WinnerTitle = "南京大排档";
-            result.Total = 10;
-            //return Json(result);
-            return Ok(result);
+                foreach(var group in responses.GroupBy(response => response.ChoiceId))
+                {
+                    TableOperation choiceRetrieveOperation = TableOperation.Retrieve<TableEntityAdapter<Choice>>(formId, group.Key);
+                    var choice = ((TableEntityAdapter<Choice>)ChoiceTable.Execute(choiceRetrieveOperation).Result)?.OriginalEntity;
+                    if (choice != null)
+                    {
+                        TableOperation shopRetrieveOperation = TableOperation.Retrieve<TableEntityAdapter<Shop>>("zgc", choice.ShopId);
+                        var shop = ((TableEntityAdapter<Shop>)ShopTable.Execute(shopRetrieveOperation).Result)?.OriginalEntity;
+                        var newItem = new ResponseSummaryItem()
+                        {
+                            ShopTitle = shop?.ShopTitle,
+                            Count = group.Count(),
+                            ResponderAvatarUrls = new List<string>()
+                        };
+                        foreach(var response in group)
+                        {
+                            TableOperation userRetrieveOperation = TableOperation.Retrieve<TableEntityAdapter<User>>("User", response.ResponderId);
+                            var user = ((TableEntityAdapter<User>)UserTable.Execute(userRetrieveOperation).Result)?.OriginalEntity;
+                            newItem.ResponderAvatarUrls.Add(user?.AvatarUrl ?? string.Empty);
+                        }
+                        summary.Items.Add(newItem);
+                    }
+                }
+                summary.WinnerTitle = summary.Items.Count() != 0 ? summary.Items.OrderByDescending(item=>item.Count).First()?.ShopTitle : string.Empty;
+                summary.Total = summary.Items.Count() != 0 ? summary.Items.Sum(item => item.Count) : 0;
+            }
+            return Ok(summary);
         }
 
         #endregion Responses Operations
