@@ -18,5 +18,6 @@ namespace FormsForWeChat.Models
         public int StarNet { get; set; }
         public double TasteScore { get; set; }
         public int Distance { get; set; }
+        public int CommentsNumber { get; set; }
     }
 }
