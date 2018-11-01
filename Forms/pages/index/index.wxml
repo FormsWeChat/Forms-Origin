@@ -1,6 +1,6 @@
 <!--index.wxml-->
 <view style="width: {{width}}px; height: {{height}}px; background-image: url({{src}})"> 
   <view class="usermotto">
-    <button class="user-motto" bindtap="onClickStart">Create new poll</button>
+    <button class="user-motto" hover-class="create-new-button-hover" bindtap="onClickStart">Create new poll</button>
   </view>
 </view>

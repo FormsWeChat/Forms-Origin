@@ -70,15 +70,20 @@
 }
 
 .vote_button_view {
-    margin-top: 20px;
+    margin-top: 300px;
     width: calc(80% - 10px);
     margin-left: calc(10% + 5px);
 }
 
 .booking_button {
-    background-color: #008272;
-    color: #FFFFFF;
-    text-align: center;
+    font-size: 15px;
+  background-color: #FFFFFF;
+  width: 86%;
+  height: 43px;
+  color: #008272;
+  border: 1px solid #008272;
+  margin-top: 13px;
+  text-align: center;
 }
 
 .booking_button_text {
@@ -87,10 +92,12 @@
   white-space: nowrap;
   display: inline-block;
   text-overflow: ellipsis;
+  font-size: 16px;
 }
 
 .booking_button_hover {
-   background-color: #004B50;
+   background-color: #008272;
+   color: #FFFFFF;
 }
 
 .page_footer {

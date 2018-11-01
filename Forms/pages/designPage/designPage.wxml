@@ -6,7 +6,6 @@
     <view class="detail">
       <text class="title">{{title}}</text>
        <template is='rating' data='{{rating:rate,max:5}}'></template>
-      <text class="comments"><block>{{comments}} items</block></text>
       <text class="price"><block> {{price}} </block></text>
     </view>
   </view>
@@ -22,7 +21,6 @@
       <view class="detail">
         <text class="title">{{title}}</text>
         <template is='rating' data='{{rating:rate,max:5}}'></template>
-        <text class="comments"><block> {{comments}} items</block></text>
         <text class="price"><block> ￥{{price}}/person </block></text>
       </view>
     </view>
@@ -30,6 +28,7 @@
 </template>
 
 <view class="container">
+<view class='shadow_container'>
   <view class="title-container">
     <view class="input-title-container">
       <input wx:if="{{Title == ''}}"class="input-title" placeholder='Typing your questions'/>
@@ -64,5 +63,5 @@
     </view>
   </view>
 
-  
+</view>
 </view>
