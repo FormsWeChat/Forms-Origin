@@ -1,7 +1,7 @@
 <!--pages/runtimePage/runtimePage.wxml-->
 <template name="swiper-item">
 <swiper-item class="swiper-item" bindtouchmove='touchMove'>
-  <view class="swiper-item-container" style='height:{{itemHeight}};'bindtap='onSwiperItem' id="{{Id}}">
+  <view class="swiper-item-container" style='height:{{itemHeight}};'bindtap='onSwiperItem' id="{{Choices.Id}}">
     <view class="image-container"><image class="swiper-item-image" src="{{Choices.Shop.ImageHref}}"/></view>
     <view class="information-container">
       <view class="title-container">
@@ -20,7 +20,7 @@
     </view>
   </view>
   <view wx:if="{{click}}" class="vote-button-container">
-    <button class="vote-button" bindtap='onVote' id='{{Id}}'>Vote</button>
+    <button class="vote-button" bindtap='onVote' id='{{Choices.Id}}'>Vote</button>
   </view>
 </swiper-item>
 </template>
