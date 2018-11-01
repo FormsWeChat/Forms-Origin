@@ -35,7 +35,7 @@
     </swiper>
     <view wx:if="{{Mode=='preview'}}" class="share-button-container">
     <view class='icon_wrapper'>
-    <image class='share_icon' src='../../images/Share.png'></image>
+
     <button class="share-button" open-type='share'>Share</button>
     </view>
     </view>
