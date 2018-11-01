@@ -72,7 +72,7 @@ Page({
       success: res => {
         app.globalData.userInfo = res.userInfo
         console.log(res.userInfo)
-        this.setst({
+        this.setData({
           userInfo: res.userInfo,
           hasUserInfo: true
         })
