@@ -6,7 +6,7 @@ Page({
   data: {
     width: 0,
     height: 0,
-    src: '../../images/welcome.png',
+    src: '../../images/welcome4.png',
 
     motto: 'Hello World',
     userInfo: {},
@@ -24,7 +24,7 @@ Page({
   },
   onClickStart: function () {
     wx.redirectTo({
-    url: '../designPage/designPage',
+      url: '../designPage/designPage',
     })
   },
 

@@ -120,9 +120,17 @@
 .share-button-container {
   width: 100%;
   position: absolute;
-  bottom: 0px;
-  height: 10%;
+  bottom: 0;
+  height: 70px;
   background-color: #ffffff;
+}
+
+.icon_wrapper {
+  position: relative;
+  text-align: center;
+  display: flex;
+  align-items: center;
+
 }
 
 .share-button {
@@ -130,8 +138,18 @@
   color: #008272;
   height: 100%;
   padding-top: 1%;
+  display: inline-flex;
+  margin-top: 7px;
 }
 
 .share-button::after {
   border: none;
+}
+
+.share_icon {
+  height: 22px;
+  width: 25px;
+  display: inline-flex;
+  vertical-align: middle;
+  margin-left: 500px;
 }
