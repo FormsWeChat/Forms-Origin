@@ -19,6 +19,7 @@ namespace FormsForWeChat.Controllers
         private CloudTable QuestionTable = null;
         private CloudTable ChoiceTable = null;
         private CloudTable ResponseTable = null;
+        private CloudTable ShopTable = null;
 
         public FormsController() : base()
         {
@@ -34,6 +35,7 @@ namespace FormsForWeChat.Controllers
             QuestionTable = tableClient.GetTableReference("Questions");
             ChoiceTable = tableClient.GetTableReference("Choices");
             ResponseTable = tableClient.GetTableReference("Responses");
+            ShopTable = tableClient.GetTableReference("Shops");
         }
 
         #region Forms Operations
@@ -76,6 +78,11 @@ namespace FormsForWeChat.Controllers
                 foreach (var question in questions)
                 {
                     question.Choices = choices?.Where(choice => choice.QuestionId == question.Id).ToList();
+                    foreach (var choice in question.Choices)
+                    {
+                        TableOperation shopRetrieveOperation = TableOperation.Retrieve<TableEntityAdapter<Shop>>("zgc", choice.ShopId);
+                        choice.Shop = ((TableEntityAdapter<Shop>)ShopTable.Execute(shopRetrieveOperation).Result)?.OriginalEntity;
+                    }
                     form.Questions.Add(question);
                 }
             }
