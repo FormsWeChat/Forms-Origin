@@ -65,12 +65,19 @@ namespace FormsForWeChat.Controllers
                 return NotFound();
             }
 
-            TableQuery<TableEntityAdapter<Question>> query = new TableQuery<TableEntityAdapter<Question>>().Where(TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, formId));
-
             var form = ((TableEntityAdapter<Form>)retrievedResult.Result).OriginalEntity;
-            foreach (var question in QuestionTable.ExecuteQuery(query).Select(result => result.OriginalEntity))
+
+            TableQuery<TableEntityAdapter<Question>> queryQuestions = new TableQuery<TableEntityAdapter<Question>>().Where(TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, formId));
+            var questions = QuestionTable.ExecuteQuery(queryQuestions).Select(result => result.OriginalEntity);
+            if (questions != null)
             {
-                form.Questions.Add(question);
+                TableQuery<TableEntityAdapter<Choice>> queryChoices = new TableQuery<TableEntityAdapter<Choice>>().Where(TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, formId));
+                var choices = ChoiceTable.ExecuteQuery(queryChoices).Select(result => result.OriginalEntity);
+                foreach (var question in questions)
+                {
+                    question.Choices = choices?.Where(choice => choice.QuestionId == question.Id).ToList();
+                    form.Questions.Add(question);
+                }
             }
 
             return Ok(form);
