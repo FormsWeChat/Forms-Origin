@@ -62,7 +62,7 @@ namespace FormsForWeChat.Controllers
             // Execute the retrieve operation.
             TableResult retrievedResult = FormTable.Execute(retrieveOperation);
 
-            if (retrievedResult == null)
+            if (retrievedResult?.Result == null)
             {
                 return NotFound();
             }
