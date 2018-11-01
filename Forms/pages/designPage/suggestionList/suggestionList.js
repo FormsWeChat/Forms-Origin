@@ -3,11 +3,9 @@ var config = require('../../../utils/config.js');
 Component({
   data: {
     title: '',
-    subtitle: '加载中...',
     type: 'movie',
-    loadData: "1",
-    page: 1,
-    size: 20,
+    loadData: "0",
+    size: 5,
     restaurants: [
       // { Id:"", "Nan Jing Da Pai Dang", image: "../../../images/cat.jpg", comments: "1000", price: "$98/person", rate: 4 },
       // { title: "Zhong 8 Lou", image: "../../../images/cat.jpg", comments: "1000", price: "$98/person", rate: 3 },
@@ -27,7 +25,7 @@ Component({
     onLoad: function onLoad() {
       var that = this;
       wx.request({
-          url: config.shopUrl + '?$top=5',
+          url: config.shopUrl + '?$top=' + this.data.size,
           data: {},
 
           success: function(res) {
