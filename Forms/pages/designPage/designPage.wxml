@@ -14,7 +14,7 @@
 
 <template name="option-item">
   <view wx:if="{{!Card}}" class="option">
-    <input class="option-input" placeholder='{{Text}}'/>
+    <input class="option-input" placeholder='{{Text}}' bindconfirm="finishInput"/>
   </view>
   <view wx:else class="suggestionContainer">
     <view class="item-suggest-button" bindtap='onSuggestButton' id="{{title}}">
@@ -46,7 +46,7 @@
     <view class="div-line"/>
     <view class="botton-buttons">
       <button class="add-options-button" bindtap='onAddOptionsButton' id="{{}}">Add options</button>
-      <button class="done-button" bindtap='onDoneButton' id="{{}}">Done</button>
+      <button wx:if="{{Options.length > 1}}" class="done-button" bindtap='onDoneButton' id="{{}}">Done</button>
     </view>
   </view>
 

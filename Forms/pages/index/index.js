@@ -4,6 +4,10 @@ const app = getApp()
 
 Page({
   data: {
+    width: 0,
+    height: 0,
+    src: '../../images/welcome4.png',
+
     motto: 'Hello World',
     userInfo: {},
     hasUserInfo: false,
@@ -25,6 +29,16 @@ Page({
   },
 
   onLoad: function () {
+    var _this = this;
+    wx.getSystemInfo({
+      success: function success(res) {
+        _this.setData({
+          width: res.windowWidth,
+          height: res.windowHeight
+        });
+      }
+    });  
+
     if (app.globalData.userInfo) {
       console.log(app.globalData.userInfo);
       this.setData({
@@ -58,7 +72,7 @@ Page({
       success: res => {
         app.globalData.userInfo = res.userInfo
         console.log(res.userInfo)
-        this.setst({
+        this.setData({
           userInfo: res.userInfo,
           hasUserInfo: true
         })

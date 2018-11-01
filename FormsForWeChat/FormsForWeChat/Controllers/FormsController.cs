@@ -97,7 +97,7 @@ namespace FormsForWeChat.Controllers
         {
             form.Id = Guid.NewGuid().ToString();
             // Create the TableOperation object that inserts the customer entity.
-            TableOperation insertOperation = TableOperation.Insert(new TableEntityAdapter<Form>(form, form.OwnerId, form.Id));
+            TableOperation insertOperation = TableOperation.Insert(new TableEntityAdapter<Form>(form, form.OwnerId??"test", form.Id));
 
             // Execute the operation.
             FormTable.Execute(insertOperation);
@@ -147,7 +147,7 @@ namespace FormsForWeChat.Controllers
 
         [HttpPost]
         [ODataRoute("Forms({formId})/Questions")]
-        public IHttpActionResult Post([FromODataUri] string formId, [FromBody] Question question)
+        public IHttpActionResult PostQuestion([FromODataUri] string formId, [FromBody] Question question)
         {
             question.Id = Guid.NewGuid().ToString();
             question.FormId = formId;
@@ -167,7 +167,7 @@ namespace FormsForWeChat.Controllers
 
         [HttpPost]
         [ODataRoute("Forms({formId})/Questions({questionId})/Choices")]
-        public IHttpActionResult Post([FromODataUri] string formId, [FromODataUri] string questionId, [FromBody] Choice choice)
+        public IHttpActionResult PostChoice([FromODataUri] string formId, [FromODataUri] string questionId, [FromBody] Choice choice)
         {
             choice.Id = Guid.NewGuid().ToString();
             choice.FormId = formId;
@@ -188,7 +188,7 @@ namespace FormsForWeChat.Controllers
 
         [HttpPost]
         [ODataRoute("Forms({formId})/Responses")]
-        public IHttpActionResult Post([FromODataUri] string formId, [FromBody] Response response)
+        public IHttpActionResult PostResponse([FromODataUri] string formId, [FromBody] Response response)
         {
             response.Id = Guid.NewGuid().ToString();
             response.FormId = formId;

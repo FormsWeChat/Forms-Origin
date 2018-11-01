@@ -5,6 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    formId:"",
     pageHeight: "95%",
     itemHeight: "80%",
     Mode: "runtime",
@@ -28,8 +29,9 @@ Page({
     })
   },
   onVote: function(e) {
+    var formId = this.data.formId;
     wx.redirectTo({
-      url: '../resultPage/analysisPage',
+      url: '../resultPage/analysisPage?formId=' + formId,
     })
   },
   touchMove: function(e) {
@@ -47,6 +49,11 @@ Page({
   onLoad: function (options) {
     if(options.Mode && options.Mode === "preview") {
       this.setData({ Mode: "preview", pageHeight: "85%", itemHeight: "85%"})
+    }
+    if(options.formId) {
+      this.setData({
+        formId: options.formId
+      })
     }
     var that = this;
     wx.getStorage({
