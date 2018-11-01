@@ -7,8 +7,6 @@ Component({
     loadData: "0",
     size: 5,
     restaurants: [
-      // { Id:"", "Nan Jing Da Pai Dang", image: "../../../images/cat.jpg", comments: "1000", price: "$98/person", rate: 4 },
-      // { title: "Zhong 8 Lou", image: "../../../images/cat.jpg", comments: "1000", price: "$98/person", rate: 3 },
     ],
     Options: [{
       Text: "Option1"

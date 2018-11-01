@@ -1,5 +1,4 @@
 // pages/resultPage/analysisPage.js
-
 var config = require('../../utils/config.js');
 
 Page({
