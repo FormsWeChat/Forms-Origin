@@ -5,6 +5,9 @@ Page({
    * 页面的初始数据
    */
   data: {
+    pageHeight: "100%",
+    itemHeight: "80%",
+    Mode: "runtime",
     Title:"",
     Options:[
       {title:"Restaurant name A", image:"../../images/cat.jpg", distance:"300M", rating: 4, comments: 199987, price: 94, type: "Western Style", click: false},
@@ -13,6 +16,9 @@ Page({
     ]
   },
   onSwiperItem: function(e) {
+    if(this.data.Mode === "preview") {
+      return
+    }
     let index = this.data.Options.findIndex((item) => {
       return item.title === e.currentTarget.id;
     })
@@ -39,6 +45,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    if(options.Mode && options.Mode === "preview") {
+      this.setData({ Mode: "preview", pageHeight: "90%", itemHeight: "100%"})
+    }
     var that = this;
     wx.getStorage({
       key: 'Title',
@@ -48,7 +57,7 @@ Page({
         })
       },
       fail: function (res) {
-        console.log(res + 'aaaaa')
+        console.log(res,'Load title fail')
       }
     })
   },
