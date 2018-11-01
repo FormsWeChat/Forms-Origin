@@ -4,7 +4,7 @@ Page({
     loading: true,
     Title: "",
     Options: [
-      { Text: "Option1", Card: false, DoneInput: false, title: "", rate: 0, comments:0, price:""}
+      { Text: "Option1", Card: false, DoneInput: false, title: "", rate: 0, comments:0, price:"", image:""}
     ],
     showBottom: "title",
   },
@@ -13,7 +13,7 @@ Page({
 
   onAddOptionsButton: function (e) {
     let newOptions = this.data.Options;
-    newOptions.push({ Text: "Option" + (newOptions.length + 1), Card: false, DoneInput: false, title: "", rate: 0, comments: 0, price: "" })
+    newOptions.push({ Text: "Option" + (newOptions.length + 1), Card: false, DoneInput: false, title: "", rate: 0, comments: 0, price: "", image: ""})
     this.setData({
       Options: newOptions
     })
@@ -33,7 +33,8 @@ Page({
     if (e.detail.eventType === "button") {
       let newOptions = this.data.Options;
       let optionLength = newOptions.length;
-      newOptions[optionLength - 1] = { 
+      newOptions[optionLength - 1] = {
+        image: e.detail.item.image,  
         Text: e.detail.item.title, 
         Card: true, 
         DoneInput: false, 
