@@ -41,10 +41,6 @@ Page({
     })
   },
 
-  onShareButton: function(e) {
-    this.onShareAppMessage();
-  },
-
   /**
    * 生命周期函数--监听页面加载
    */
@@ -111,7 +107,10 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
-
-  }
+  onShareAppMessage: function onShareAppMessage() {
+    return {
+      title: 'Where should we eat?',
+      path: '/pages/runtimePage/runtimePage'
+    }
+  },
 })

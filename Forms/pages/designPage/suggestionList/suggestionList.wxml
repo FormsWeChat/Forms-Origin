@@ -1,35 +1,28 @@
 <import src='../../rating/rating' />
 
 <template name="item-suggest">
-  <view class="item-suggest-button" bindtap='onSuggestButton' id="{{title}}">
-    <image class="itemImage" src="/../../images/cat.jpg" mode="aspectFill" />
+  <view class="item-suggest-button" bindtap='onSuggestButton' id="{{Id}}">
+    <image class="itemImage" src='{{ImageHref}}' mode="aspectFill" />
     <view class="detail">
-      <text class="title">{{title}}</text>
-      <template is='rating' data='{{rating:rate,max:5}}'></template>
-      <text class="comments"><block>{{comments}} items</block></text>
-      <text class="price"><block> {{price}} </block></text>
+      <text class="title">{{ShopTitle}}</text>
+      <template is='rating' data='{{rating:StarNet,max:50}}'></template>
+      <text class="comments"><block>{{CommentsNumber}} items</block></text>
+      <text class="price"><block> ${{AveragePrice}} /person </block></text>
     </view>
   </view>
 </template>
 
-<view class="suggestionContainer">
+<view wx:if="{{loadData==1}}" class="suggestionContainer">
   <view class='top'>
     <text class="title"> Suggested options</text>
     <button class="filterButton" bindtap='onFilter'>Filter</button>
   </view>
 
-  <view wx:for="{{restaurants}}" wx:key="{{restaurants}}" class="list-container">
+  <scroll-view scroll-y wx:for="{{restaurants}}" wx:key="{{restaurants}}" class="list-container">
     <template is="item-suggest" data="{{...item}}"> </template>
-  </view>
-  <view class="tips">
-    <view wx:if="{{ hasMore }}">
-      <image src="/images/loading.gif" mode="aspectFill" />
-      <text>Loading...</text>
-    </view>
-    <view wx:else>
-      <text>No More</text>
-    </view>
-  </view>
+  </scroll-view>
 </view>
 
-<loading hidden="{{ !loading }}">Loading...</loading>
+<view wx:elif="{{loadData==0}}" class="Loading_view">
+  <loading>加载中</loading>
+</view>

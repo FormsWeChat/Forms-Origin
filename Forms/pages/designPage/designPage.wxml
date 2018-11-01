@@ -2,7 +2,7 @@
 
 <template name="item-suggest">
   <view class="item-suggest-button" bindtap='onSuggestButton' id="{{title}}">
-    <image class="itemImage" src="/../../images/cat.jpg" mode="aspectFill" />
+    <image class="itemImage" src='{{image}}' mode="aspectFill" />
     <view class="detail">
       <text class="title">{{title}}</text>
        <template is='rating' data='{{rating:rate,max:5}}'></template>
@@ -14,11 +14,11 @@
 
 <template name="option-item">
   <view wx:if="{{!Card}}" class="option">
-    <input class="option-input" placeholder='{{Text}}'/>
+    <input class="option-input" placeholder='{{Text}}' bindconfirm="finishInput"/>
   </view>
   <view wx:else class="suggestionContainer">
     <view class="item-suggest-button" bindtap='onSuggestButton' id="{{title}}">
-      <image class="itemImage" src="/../../images/cat.jpg" mode="aspectFill" />
+      <image class="itemImage" src='{{image}}' mode="aspectFill" />
       <view class="detail">
         <text class="title">{{title}}</text>
         <template is='rating' data='{{rating:rate,max:5}}'></template>
@@ -46,7 +46,7 @@
     <view class="div-line"/>
     <view class="botton-buttons">
       <button class="add-options-button" bindtap='onAddOptionsButton' id="{{}}">Add options</button>
-      <button class="done-button" bindtap='onDoneButton' id="{{}}">Done</button>
+      <button wx:if="{{Options.length > 1}}" class="done-button" bindtap='onDoneButton' id="{{}}">Done</button>
     </view>
   </view>
 

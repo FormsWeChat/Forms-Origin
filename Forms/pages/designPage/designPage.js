@@ -4,16 +4,21 @@ Page({
     loading: true,
     Title: "",
     Options: [
-      { Text: "Option1", Card: false, DoneInput: false, title: "", rate: 0, comments:0, price:""}
+      { Text: "Option1", Card: false, DoneInput: false, title: "", rate: 0, comments:0, price:"", image:""}
     ],
     showBottom: "title",
   },
   //事件处理函数
-
+  finishInput: function (e) {
+    wx.setStorage({
+      key: 'suggestionFilterKeyword',
+      data: e.detail.value,
+    })
+  },
 
   onAddOptionsButton: function (e) {
     let newOptions = this.data.Options;
-    newOptions.push({ Text: "Option" + (newOptions.length + 1), Card: false, DoneInput: false, title: "", rate: 0, comments: 0, price: "" })
+    newOptions.push({ Text: "Option" + (newOptions.length + 1), Card: false, DoneInput: false, title: "", rate: 0, comments: 0, price: "", image: ""})
     this.setData({
       Options: newOptions
     })
@@ -34,13 +39,14 @@ Page({
       let newOptions = this.data.Options;
       let optionLength = newOptions.length;
       newOptions[optionLength - 1] = { 
-        Text: e.detail.item.title, 
+        image: e.detail.item.image,  
+        Text: e.detail.item.ShopTitle, 
         Card: true, 
         DoneInput: false, 
-        title: e.detail.item.title, 
-        rate: e.detail.item.rate, 
-        comments: e.detail.item.comments, 
-        price: e.detail.item.price
+        title: e.detail.item.ShopTitle, 
+        rate: e.detail.item.StarNet, 
+        comments: e.detail.item.CommentsNumber, 
+        price: e.detail.item.AveragePrice
       }
       this.setData({
         Options: newOptions,
@@ -59,6 +65,8 @@ Page({
       Title: e.detail.Title,
       showBottom: "suggestion"
     });
+    const component = this.selectComponent('#suggestion-List');
+    component.onLoad();
   },
 
   backToSuggestion: function (e) {
@@ -76,12 +84,7 @@ Page({
   onShareAppMessage: function onShareAppMessage() {
     return {
       title: 'Where should we eat?',
-      path: '/pages/runtimePage/runtimePage'
+      path: '/pages/runtimePage/runtimePage?Mode=runtime'
     }
-  },
-
-  shareForm: function (e) {
-    console.log(e)
-    Page.onshareAppMessage
   },
 })

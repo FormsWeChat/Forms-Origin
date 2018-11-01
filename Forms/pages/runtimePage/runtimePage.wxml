@@ -34,7 +34,7 @@
           </block>
     </swiper>
     <view wx:if="{{Mode=='preview'}}" class="share-button-container">
-      <button class="share-button" bindtap='onShareButton'>Share</button>
+      <button class="share-button" open-type='share'>Share</button>
     </view>
   </view>
 </view>
