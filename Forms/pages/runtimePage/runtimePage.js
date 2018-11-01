@@ -28,6 +28,9 @@ Page({
     })
   },
   onVote: function(e) {
+    wx.request({
+      url: '',
+    })
     wx.redirectTo({
       url: '../resultPage/analysisPage',
     })
