@@ -19,7 +19,7 @@
 }
 
 .scroll-suggest-list {
-  max-height: 63vh;
+  max-height: 56vh;
 }
 
 .top {
