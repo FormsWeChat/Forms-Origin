@@ -46,6 +46,8 @@ Page({
         Options: newOptions,
         showBottom: "suggestion"
       })
+      const component = this.selectComponent('#suggestion-List');
+      component.onLoad();
       this.onAddOptionsButton()
     }
     else if (e.detail.eventType === "suggestion") {
