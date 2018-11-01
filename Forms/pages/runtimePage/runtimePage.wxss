@@ -26,7 +26,6 @@
 .swiper-item-container {
   background-color: #ffffff;
   width: 90%;
-  height: 80%;
   border-radius: 0px 0px 5px 5px;
 }
 
@@ -102,12 +101,15 @@
 .vote-button-container {
   background-color: #ffffff;
   width: 90%;
-  height: 15%;
+  height: 14%;
   position: absolute;
   border-radius: 0px 0px 5px 5px;
 }
 
 .vote-button {
+  font-size: 16px;
+  height: 8vh;
+  line-height: 8vh;
   width: 90%;
   border: 1px solid #008272;
   color: #008272;

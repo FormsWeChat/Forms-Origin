@@ -19,6 +19,12 @@ Page({
     })
   },
 
+  onDoneButton: function(e) {
+    wx.navigateTo({
+      url: '../runtimePage/runtimePage?Mode=preview',
+    })
+  },
+
   onClickSuggestion: function (e) {
     console.log("ClickSuggestion:", e);
     this.setData({
