@@ -1,13 +1,16 @@
 // pages/resultPage/analysisPage.js
 
 var config = require('../../utils/config.js');
+var formId = '3edd2659-803b-41ee-bee7-862dad5b8121';
 
 Page({
   /**
    * Page initial data
    */
   data: {
+    vote:{},
     // Mock vote data
+    /*
     vote:
       {
         items: [{
@@ -128,6 +131,7 @@ Page({
         storeName: '南京大排档',
         count: 12
       },
+     */
   },
 
   /**
@@ -137,14 +141,12 @@ Page({
     //var voteId = options.VOTE_ID;
 
     var that = this;
+    var url = config.resultUrl + '\'' + formId + '\'' + ')/Responses/Summary';
 
     //获取投票结果
-    /*
    wx.request( {
-     url: config.resultUrl,
+     url: config.resultUrl + '\'' + formId  + '\'' + ')/Responses/Summary',
      data: {
-       VOTE_ID: voteId,
-       OPEN_ID: wx.getStorageSync( 'openid' )
        },
  
        success: function(res) {
@@ -153,7 +155,7 @@ Page({
            vote: res.data
            });
            }
-       });*/
+       });
   },
 
   orderPhoneCall: function () {

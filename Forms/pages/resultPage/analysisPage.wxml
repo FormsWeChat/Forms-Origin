@@ -5,19 +5,19 @@
 
     <view class="page__bd">
         <view>
-            <block wx:for="{{vote.items}}" wx:for-index="idx" wx:for-item="item" class="vote_item_block">
-               <view class="vote_item_title">{{item.storeName}}<span class="item_count_span">({{item.count}})</span></view>
+            <block wx:for="{{vote.Items}}" wx:for-index="idx" wx:for-item="item" class="vote_item_block">
+               <view class="vote_item_title">{{item.ShopTitle}}<span class="item_count_span">({{item.Count}})</span></view>
 
-                <progress class="vote_item_progress" percent="{{100*item.count/vote.count}}" stroke-width="10" activeColor='#008272' />
+                <progress class="vote_item_progress" percent="{{100*item.Count/vote.Total}}" stroke-width="10" activeColor='#008272' />
 
                 <view class="vote_image_views">
-                    <view wx:for="{{item.images}}" wx:for-index="iidx" wx:for-item="vimage" class="vote_image_view">
+                    <view wx:for="{{item.ResponderAvatarUrls}}" wx:for-index="iidx" wx:for-item="vimage" class="vote_image_view">
                         <view wx:if="{{iidx < 5}}">
-                            <image src="{{vimage.src}}" class="vote_image vote_image_common"></image>
+                            <image src="{{vimage}}" class="vote_image vote_image_common"></image>
                         </view>
                         <view wx:elif="{{iidx == 5}}" class="vote_image_text_view">
                             <image class="vote_image_more vote_image_common"></image>
-                            <span class="vote_text_span">+{{item.count-2}}</span>
+                            <span class="vote_text_span">+{{item.Count-5}}</span>
                         </view>
                     </view>
                 </view>
@@ -25,7 +25,7 @@
         </view>
 
         <view class="vote_button_view">
-            <button class="booking_button" hover-class="booking_button_hover" bindtap="orderPhoneCall">Booking({{vote.storeName}})</button>
+            <button class="booking_button" hover-class="booking_button_hover" bindtap="orderPhoneCall">Booking({{vote.WinnerTitle}})</button>
         </view>
     </view>
 
