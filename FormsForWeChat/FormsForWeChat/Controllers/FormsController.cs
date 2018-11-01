@@ -190,6 +190,13 @@ namespace FormsForWeChat.Controllers
         [ODataRoute("Forms({formId})/Responses")]
         public IHttpActionResult PostResponse([FromODataUri] string formId, [FromBody] Response response)
         {
+            TableOperation retrieveOperation = TableOperation.Retrieve<TableEntityAdapter<Choice>>(formId, response.ChoiceId);
+            TableResult retrievedResult = ChoiceTable.Execute(retrieveOperation);
+            if (retrievedResult?.Result == null)
+            {
+                return BadRequest("Invalid Choice Id");
+            }
+
             response.Id = Guid.NewGuid().ToString();
             response.FormId = formId;
 

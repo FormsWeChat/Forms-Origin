@@ -12,5 +12,8 @@ namespace FormsForWeChat.Models
         public string FormId { get; set; }
 
         public string ResponderId { get; set; }
+
+        // Todo: Add support for Dictionary<QuestionId, ChoiceId> to support multiple questions
+        public string ChoiceId { get; set; }
     }
 }
