@@ -28,8 +28,9 @@ Page({
     })
   },
   onVote: function(e) {
+    var formId = "3edd2659-803b-41ee-bee7-862dad5b8121";
     wx.redirectTo({
-      url: '../resultPage/analysisPage',
+      url: '../resultPage/analysisPage?formId=' + formId,
     })
   },
   touchMove: function(e) {
