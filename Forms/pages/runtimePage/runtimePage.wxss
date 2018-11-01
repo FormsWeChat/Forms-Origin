@@ -14,7 +14,7 @@
 }
 
 .swiper-container {
-  height: 80%;
+  height: 84%;
   padding-top: 10%;
 }
 
@@ -115,4 +115,21 @@
   color: #008272;
   background-color: #ffffff;
   margin-top: 2%;
+}
+
+.share-button-container {
+  width: 100%;
+  position: absolute;
+  bottom: 0px;
+  height: 10%;
+  background-color: #ffffff;
+}
+
+.share-button {
+  background-color: #ffffff;
+  color: #008272;
+}
+
+.share-button::after {
+  border: none;
 }
