@@ -14,7 +14,7 @@
 }
 
 .swiper-container {
-  height: 80%;
+  height: 84%;
   padding-top: 10%;
 }
 
@@ -26,7 +26,6 @@
 .swiper-item-container {
   background-color: #ffffff;
   width: 90%;
-  height: 80%;
   border-radius: 0px 0px 5px 5px;
 }
 
@@ -102,15 +101,37 @@
 .vote-button-container {
   background-color: #ffffff;
   width: 90%;
-  height: 15%;
+  height: 14%;
   position: absolute;
   border-radius: 0px 0px 5px 5px;
 }
 
 .vote-button {
+  font-size: 16px;
+  height: 8vh;
+  line-height: 8vh;
   width: 90%;
   border: 1px solid #008272;
   color: #008272;
   background-color: #ffffff;
   margin-top: 2%;
+}
+
+.share-button-container {
+  width: 100%;
+  position: absolute;
+  bottom: 0px;
+  height: 10%;
+  background-color: #ffffff;
+}
+
+.share-button {
+  background-color: #ffffff;
+  color: #008272;
+  height: 100%;
+  padding-top: 1%;
+}
+
+.share-button::after {
+  border: none;
 }

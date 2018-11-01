@@ -45,7 +45,7 @@
 }
 
 .options-container {
-  max-height: 100px;
+  max-height: 15vh;
 }
 
 .div-line {
@@ -72,11 +72,19 @@
   padding-left: 2%;
 }
 
-.detail {
-  padding-left: 2%
+.com-rating {
+  font-size: 1em;
 }
+
+.detail {
+  padding-left: 2%;
+  color: #a8a8a8;
+}
+
 .detail .title {
   font-size: 70%;
+  color: #333333;
+  padding-top: 2%;
 }
 
 .option {
@@ -89,14 +97,32 @@
   padding-left: 1%;
 }
 
-.add-options-button {
+.botton-buttons {
   padding-top: 10px;
+  padding-left: 1vw;
+}
+
+.add-options-button {
   text-align: left;
   border: none;
   background-color: #ffffff;
   color:#008272;
   font-size: 13px;
-  padding-left: 1%;
+  padding:0;
+  display: inline-block;
+}
+
+.done-button {
+  position: absolute;
+  right: 7vw;
+  background-color: #ffffff;
+  font-size: 13px;
+  color:#008272;
+  display: inline-block;
+}
+
+.done-button::after {
+    border: none;
 }
 
 .add-options-button::after {

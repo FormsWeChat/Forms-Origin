@@ -41,9 +41,13 @@ Page({
             method:  "POST",
             success: res=> {
               console.log(res.data);
-              this.setData({
-                Id: res.data.Id,
-                SignInHash: res.data.SignInHash,
+              wx.setStorage({
+                key: 'Id',
+                data: res.data.Id,
+              })
+              wx.setStorage({
+                key: 'SignInHash',
+                data: res.data.SignInHash,
               })
             }
           })
@@ -54,7 +58,7 @@ Page({
       success: res => {
         app.globalData.userInfo = res.userInfo
         console.log(res.userInfo)
-        this.setData({
+        this.setst({
           userInfo: res.userInfo,
           hasUserInfo: true
         })

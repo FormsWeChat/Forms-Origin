@@ -2,7 +2,7 @@
 
 <template name="item-suggest">
   <view class="item-suggest-button" bindtap='onSuggestButton' id="{{title}}">
-    <image class="itemImage" src="/../../images/cat.jpg" mode="aspectFill" />
+    <image class="itemImage" src='{{image}}' mode="aspectFill" />
     <view class="detail">
       <text class="title">{{title}}</text>
       <template is='rating' data='{{rating:rate,max:5}}'></template>
@@ -12,7 +12,7 @@
   </view>
 </template>
 
-<view class="suggestionContainer">
+<view wx:if="{{loadData==1}}" class="suggestionContainer">
   <view class='top'>
     <text class="title"> Suggested options</text>
     <button class="filterButton" bindtap='onFilter'>Filter</button>
@@ -32,4 +32,6 @@
   </view>
 </view>
 
-<loading hidden="{{ !loading }}">Loading...</loading>
+<view wx:elif="{{loadData==0}}" class="Loading_view">
+  <loading>加载中</loading>
+</view>

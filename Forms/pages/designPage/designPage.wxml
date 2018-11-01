@@ -2,7 +2,7 @@
 
 <template name="item-suggest">
   <view class="item-suggest-button" bindtap='onSuggestButton' id="{{title}}">
-    <image class="itemImage" src="/../../images/cat.jpg" mode="aspectFill" />
+    <image class="itemImage" src='{{image}}' mode="aspectFill" />
     <view class="detail">
       <text class="title">{{title}}</text>
        <template is='rating' data='{{rating:rate,max:5}}'></template>
@@ -18,7 +18,7 @@
   </view>
   <view wx:else class="suggestionContainer">
     <view class="item-suggest-button" bindtap='onSuggestButton' id="{{title}}">
-      <image class="itemImage" src="/../../images/cat.jpg" mode="aspectFill" />
+      <image class="itemImage" src='{{image}}' mode="aspectFill" />
       <view class="detail">
         <text class="title">{{title}}</text>
         <template is='rating' data='{{rating:rate,max:5}}'></template>
@@ -44,8 +44,10 @@
     <template wx:for="{{Options}}" wx:key="Options{{Text}}" is="option-item" data="{{...item}}"></template>
     </scroll-view>
     <view class="div-line"/>
-    <button class="add-options-button" bindtap='onAddOptionsButton' id="{{}}">Add options
-    </button>
+    <view class="botton-buttons">
+      <button class="add-options-button" bindtap='onAddOptionsButton' id="{{}}">Add options</button>
+      <button class="done-button" bindtap='onDoneButton' id="{{}}">Done</button>
+    </view>
   </view>
 
   <view class="suggest-title footer">

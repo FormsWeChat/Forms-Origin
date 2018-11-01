@@ -19,6 +19,12 @@ Page({
     })
   },
 
+  onDoneButton: function(e) {
+    wx.navigateTo({
+      url: '../runtimePage/runtimePage?Mode=preview',
+    })
+  },
+
   onClickSuggestion: function (e) {
     console.log("ClickSuggestion:", e);
     this.setData({
@@ -70,12 +76,7 @@ Page({
   onShareAppMessage: function onShareAppMessage() {
     return {
       title: 'Where should we eat?',
-      path: '/pages/runtimePage/runtimePage'
+      path: '/pages/runtimePage/runtimePage?Mode=runtime'
     }
-  },
-
-  shareForm: function (e) {
-    console.log(e)
-    Page.onshareAppMessage
   },
 })
