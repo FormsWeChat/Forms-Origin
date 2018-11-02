@@ -70,7 +70,7 @@
 }
 
 .vote_button_view {
-    margin-top: 300px;
+    margin-top: 35px;
     width: calc(80% - 10px);
     margin-left: calc(10% + 5px);
 }

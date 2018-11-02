@@ -8,6 +8,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    LoadingData:"0",
     Responded: false,
     Id: "",
     SignInHash: "",
@@ -134,7 +135,8 @@ Page({
           })
           that.setData({
             Options: newOptions,
-            Title: res.data.Questions[0].Description
+            Title: res.data.Questions[0].Description,
+            LoadingData: "1",
           })
         }
         

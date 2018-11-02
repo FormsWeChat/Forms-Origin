@@ -6,6 +6,7 @@ Page({
    * Page initial data
    */
   data: {
+    //vote:{},
     vote:{},
     loadData:"0",
     formId:"",

@@ -23,7 +23,7 @@
 </swiper-item>
 </template>
 
-<view class="container">
+<view wx:if="{{LoadingData==1}}"class="container">
 <view class="runtime-title">{{Title}}</view>
   <view class="swiper-container">
     <swiper style='width:100%;height:{{pageHeight}}'
@@ -43,4 +43,8 @@
   <view wx:if="{{voteStatus==1}}" class="Loading_view">
      <loading>Voting</loading>
     </view>
+</view>
+
+<view wx:elif="{{loadData==0}}" class="Loading_view">
+<loading>Loading</loading>
 </view>

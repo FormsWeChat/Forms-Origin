@@ -37,7 +37,7 @@ Page({
 
   onDoneButton: function(e) {
     wx.navigateTo({
-      url: '../runtimePage/runtimePage?Mode=preview&formId='+this.data.formId,
+      url: '../runtimePage/runtimePage?Mode=runtime&formId='+this.data.formId,
     })
   },
 
