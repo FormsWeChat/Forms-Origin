@@ -232,7 +232,7 @@ namespace FormsForWeChat.Controllers
                     {
                         ShopTitle = shop?.ShopTitle,
                         Count = 0,
-                        ResponderAvatarUrls = new List<string>()
+                        ResponderAvatarUrls = new List<string>() { "https://miniforms.file.core.windows.net/images/avatar_placeholder.png?sv=2018-03-28&si=images-166CD972EB2&sr=f&sig=nscT%2BVaYQ61ZmXtcVF0fWPMxxHeSZbGwm9Ed9Az7MKg%3D" }
                     };
 
                     var choiceResponses = responses.Where(res => res.ChoiceId == choice.Id);

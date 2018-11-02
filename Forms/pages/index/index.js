@@ -26,8 +26,10 @@ Page({
   },
   onClickStart: function (e) {
     let id, hash;
+    wx.redirectTo({
+      url: '../designPage/designPage',
+    })
     
-    let avatar = e.detail.userInfo.avatarUrl;
     wx.getStorage({
       key: 'SignInHash',
       success: function (res) {
@@ -51,9 +53,6 @@ Page({
           },
         })
       }})
-    wx.redirectTo({
-      url: '../designPage/designPage',
-    })
   },
 
   onLoad: function () {
