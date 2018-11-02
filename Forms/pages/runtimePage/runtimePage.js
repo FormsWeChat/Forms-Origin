@@ -33,8 +33,9 @@ Page({
       return item.Choices.Id === e.currentTarget.id;
     })
     this.data.Options[index].click = true;
+    this.data.Options[index].itemHeight = "88%";
     this.setData({
-      Options: this.data.Options
+      Options: this.data.Options,
     })
   },
   onVote: function(e) {
@@ -70,8 +71,10 @@ Page({
   },
 
   touchMove: function(e) {
+    let that = this
     this.data.Options.forEach((item) => {
       item.click = false
+      item.itemHeight = that.data.itemHeight
     })
     this.setData({
       Options: this.data.Options
@@ -131,7 +134,7 @@ Page({
         if(res.data.Questions.length > 0) {
           let newOptions = res.data.Questions[0].Choices.map((item) => {
             item.Shop.Distance = (item.Shop.Distance/1000.0).toFixed(1)
-            return {click: false, Choices: item}
+            return {click: false, Choices: item, itemHeight: that.data.itemHeight}
           })
           that.setData({
             Options: newOptions,

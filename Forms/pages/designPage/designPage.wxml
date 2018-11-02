@@ -12,15 +12,15 @@
 </template>
 
 <template name="option-item">
-  <view wx:if="{{!Card}}" class="option">
+  <view wx:if="{{!Card}}" class="option" id="ShopId{{Id}}">
     <input class="option-input" placeholder='{{Text}}' bindconfirm="finishInput"/>
   </view>
   <view wx:else class="suggestionContainer">
-    <view class="item-suggest-button" bindtap='onSuggestButton' id="{{title}}">
+    <view class="item-suggest-button" bindtap='onSuggestButton' id="ShopId{{Id}}">
       <image class="itemImage" src='{{image}}' mode="aspectFill" />
       <view class="detail">
         <text class="title">{{title}}</text>
-        <template is='rating' data='{{rating:rate,max:5}}'></template>
+        <template is='rating' data='{{rating:rate,max:50}}'></template>
         <text class="price"><block> ￥{{price}}/person </block></text>
       </view>
     </view>
@@ -39,7 +39,7 @@
   
 
   <view class="design-container">
-    <scroll-view scroll-y="true" class="options-container">
+    <scroll-view scroll-y="true" class="options-container" scroll-into-view="{{lastItemId}}">
     <template wx:for="{{Options}}" wx:key="Options{{Text}}" is="option-item" data="{{...item}}"></template>
     </scroll-view>
     <view class="div-line"/>
@@ -47,6 +47,7 @@
       <button class="add-options-button" bindtap='onAddOptionsButton' id="{{}}">Add options</button>
       <button wx:if="{{Options.length > 1}}" class="done-button" bindtap='onDoneButton' id="{{}}">Done</button>
     </view>
+  </view>
   </view>
 
   <view class="suggest-title footer">
@@ -63,5 +64,5 @@
     </view>
   </view>
 
-</view>
+
 </view>
