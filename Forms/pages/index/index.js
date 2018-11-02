@@ -76,8 +76,9 @@ Page({
         console.log(res.userInfo)
         this.setData({
           userInfo: res.userInfo,
-          hasUserInfo: true
+          hasUserInfo: true,
         })
+        
       }
     })
   }
