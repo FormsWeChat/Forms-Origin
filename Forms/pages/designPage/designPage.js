@@ -10,7 +10,7 @@ Page({
     loading: true,
     Title: "",
     Options: [
-      { Id:"", Text: "Option1", Card: false, DoneInput: false, title: "", rate: 0, comments:0, price:"", image:""}
+      { Id:"0", Text: "Option1", Card: false, DoneInput: false, title: "", rate: 0, comments:0, price:"", image:""}
     ],
     showBottom: "title",
     orderBy: "TasteScore",
@@ -18,6 +18,7 @@ Page({
     maxPrice: 150,
     choseMinPrice: 50,
     choseMaxPrice: 150,
+    lastItemId: "0",
   },
   //事件处理函数
   finishInput: function (e) {
@@ -29,9 +30,9 @@ Page({
 
   onAddOptionsButton: function (e) {
     let newOptions = this.data.Options;
-    newOptions.push({ Id: "", Text: "Option" + (newOptions.length + 1), Card: false, DoneInput: false, title: "", rate: 0, comments: 0, price: "", image: ""})
+    newOptions.push({ Id: this.data.Options.length, Text: "Option" + (newOptions.length + 1), Card: false, DoneInput: false, title: "", rate: 0, comments: 0, price: "", image: ""})
     this.setData({
-      Options: newOptions
+      Options: newOptions,
     })
   },
 
@@ -62,7 +63,8 @@ Page({
       }
       this.setData({
         Options: newOptions,
-        showBottom: "suggestion"
+        showBottom: "suggestion",
+        lastItemId: "ShopId" + e.detail.item.Id
       })
 
       const component = this.selectComponent('#suggestion-List');
