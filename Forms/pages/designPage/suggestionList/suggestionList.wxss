@@ -10,8 +10,9 @@
 
 .itemImage {
   width: 100px;
-  height: 80px;
-  margin-right: 20rpx;
+  height: 60px;
+  margin-right: 35rpx;
+  border-radius: 3px;
 }
 
 .list-container {
@@ -32,15 +33,18 @@
 }
 
 .top .title {
-  font-size: 15rps;  
-  color: #868686;
+  font-size: 14px;  
+  color: #666666;
+  padding-top: 14px;
 }
 
 .filterButton {
   display: flex;
-  margin-right:5rpx;
+  margin-right:-2rpx;
   align-items: center;
-  font-size: 15rpx;
+  font-size: 12px;
+  color: #666666;
+  margin-top: 15px;
 }
 
 .detail {
@@ -49,14 +53,14 @@
 
 .detail .title {
   display: block;
-  font-size: 32rpx;
-  font-weight: bold;
+  font-size: 15px;
 }
 
 .detail .comments,
 .detail .price {
   display: inline;
   font-size: 22rpx;
+  margin-left: 5px;
 }
 
 .tips {
@@ -85,4 +89,8 @@
 .com-rating .rating-off {
   padding: 0;
   margin: 0;
+}
+
+.suggest-button-hover {
+  background-color: #e4ebec;
 }

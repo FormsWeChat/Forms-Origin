@@ -29,5 +29,5 @@
         bind:heighValueChange="highValueChangeAction" />
     </view>
   </view>
-  <button class="apply-filter-button" bindtap='applyFilter'>Apply</button>
+  <button class="apply-filter-button"  hover-class="apply_hover_button" bindtap='applyFilter'>Apply</button>
 </view>

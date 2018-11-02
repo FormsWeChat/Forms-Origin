@@ -1,13 +1,12 @@
 <import src='../../rating/rating' />
 
 <template name="item-suggest">
-  <view class="item-suggest-button" bindtap='onSuggestButton' id="{{Id}}">
+  <view class="item-suggest-button" hover-class='suggest-button-hover' bindtap='onSuggestButton' id="{{Id}}">
     <image class="itemImage" src='{{ImageHref}}' mode="aspectFill" />
     <view class="detail">
       <text class="title">{{ShopTitle}}</text>
       <template is='rating' data='{{rating:StarNet,max:50}}'></template>
-      <text class="comments"><block>{{CommentsNumber}} items</block></text>
-      <text class="price"><block> ￥{{AveragePrice}} /person </block></text>
+      <text class="price"><block> Average price:￥{{AveragePrice}} </block></text>
     </view>
   </view>
 </template>

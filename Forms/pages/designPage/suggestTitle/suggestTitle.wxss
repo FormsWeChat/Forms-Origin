@@ -5,7 +5,7 @@
   padding-left: 15%;
   width: 70%;
   font-size: 15px;
-  color: #c4bdbd;
+  color: #666666;
 }
 
 .title-suggest-button {
@@ -17,7 +17,7 @@
   height: 45px;
   line-height: 45px;
   vertical-align:middle;
-  border-radius: 25px;
+  border-radius: 6px;
 }
 
 .title-suggest-button-hover { 
