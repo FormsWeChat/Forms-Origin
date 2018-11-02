@@ -4,8 +4,9 @@
 }
 
 .item-suggest-button {
-  margin-top: 40rpx;
+  margin-top: 30rpx;
   display: flex;
+  height: 80px;
 }
 
 .itemImage {
@@ -93,4 +94,5 @@
 
 .suggest-button-hover {
   background-color: #e4ebec;
+  width: 150%
 }
