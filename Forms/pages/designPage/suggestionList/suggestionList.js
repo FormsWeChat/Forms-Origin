@@ -53,7 +53,7 @@ Component({
                       })
 
                       if (that.data.Filter) {
-                        url = url + '$orderby=' + this.data.Sort + '&$filter=AveragePrice' + '%20lt%20' + this.data.MinPrice + '%20&%20ga%20' + this.data.MaxPrice;
+                        url = url + '$orderby=' + this.data.Sort + '&$filter=AveragePrice%20lt%20' + this.data.MaxPrice + '%20and%20AveragePrice%20gt%20' + this.data.MinPrice;
                       }
                       wx.request({
                         url: url + '&$top=' + that.data.size,
