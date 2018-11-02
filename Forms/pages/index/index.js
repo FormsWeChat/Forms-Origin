@@ -24,7 +24,33 @@ Page({
       url: '../logs/logs'
     })
   },
-  onClickStart: function () {
+  onClickStart: function (e) {
+    let id, hash;
+    
+    let avatar = e.detail.userInfo.avatarUrl;
+    wx.getStorage({
+      key: 'SignInHash',
+      success: function (res) {
+        hash: res.data
+        wx.getStorage({
+          key: 'Id',
+          success: function (res) {
+            id = res.data
+            console.log(e.detail)
+            wx.request({
+              url: "https://miniforms.azurewebsites.net/SetAvatar",
+              method: 'POST',
+              data: {avatarUrl:e.detail.userInfo.avatarUrl},
+              header: {
+                Authorization: "eihei " + id + ":" + hash,
+              },
+              success(res) {
+                console.log("send avator link success")
+              }
+            })
+          },
+        })
+      }})
     wx.redirectTo({
       url: '../designPage/designPage',
     })
