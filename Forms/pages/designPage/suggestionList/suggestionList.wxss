@@ -22,6 +22,7 @@
 
 .scroll-suggest-list {
   max-height: 56vh;
+  padding-top: 12px;
 }
 
 .top {
