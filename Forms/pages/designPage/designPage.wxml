@@ -20,7 +20,7 @@
       <image class="itemImage" src='{{image}}' mode="aspectFill" />
       <view class="detail">
         <text class="title">{{title}}</text>
-        <template is='rating' data='{{rating:rate,max:5}}'></template>
+        <template is='rating' data='{{rating:rate,max:50}}'></template>
         <text class="price"><block> ￥{{price}}/person </block></text>
       </view>
     </view>
@@ -48,6 +48,7 @@
       <button wx:if="{{Options.length > 1}}" class="done-button" bindtap='onDoneButton' id="{{}}">Done</button>
     </view>
   </view>
+  </view>
 
   <view class="suggest-title footer">
     <view wx:if="{{showBottom == 'title'}}">
@@ -63,5 +64,5 @@
     </view>
   </view>
 
-</view>
+
 </view>
