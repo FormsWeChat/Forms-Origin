@@ -21,6 +21,30 @@ App({
             success: res => {
               // 可以将 res 发送给后台解码出 unionId
               this.globalData.userInfo = res.userInfo
+              let id, hash
+              wx.getStorage({
+                key: 'SignInHash',
+                success: function (res) {
+                  hash: res.data
+                  wx.getStorage({
+                    key: 'Id',
+                    success: function (res) {
+                      id = res.data
+                      wx.request({
+                        url: "https://miniforms.azurewebsites.net/SetAvatar",
+                        method: 'POST',
+                        header: {
+                          Authorization: "eihei " + id + ":" + hash,
+                        },
+                        success(res) {
+                          console.log("send avator link success")
+                        }
+                      })
+                    },
+                  })
+                },
+              })
+
 
               // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
               // 所以此处加入 callback 以防止这种情况

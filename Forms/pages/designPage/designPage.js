@@ -13,7 +13,11 @@ Page({
       { Id:"", Text: "Option1", Card: false, DoneInput: false, title: "", rate: 0, comments:0, price:"", image:""}
     ],
     showBottom: "title",
-
+    orderBy: "TasteScore",
+    minPrice: 50,
+    maxPrice: 150,
+    choseMinPrice: 50,
+    choseMaxPrice: 150,
   },
   //事件处理函数
   finishInput: function (e) {
