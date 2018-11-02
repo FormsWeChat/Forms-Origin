@@ -26,7 +26,7 @@
 
         <view class="vote_button_view">
             <button class="booking_button" hover-class="booking_button_hover" bindtap="orderPhoneCall">
-            <span class="booking_button_text">Booking({{vote.WinnerTitle}})</span></button>
+            <span class="booking_button_text">Booking ({{vote.WinnerTitle}})</span></button>
         </view>
     </view>
     <view class="page_footer">

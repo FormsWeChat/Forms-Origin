@@ -47,6 +47,7 @@
     align-items: center;
     flex-flow: row nowrap;
     widows: 100%;
+    height: 35px;
 }
 
 .vote_image_more {
@@ -76,9 +77,9 @@
 }
 
 .booking_button {
-    font-size: 15px;
+  font-size: 15px;
   background-color: #FFFFFF;
-  width: 86%;
+  width: 100%;
   height: 43px;
   color: #008272;
   border: 1px solid #008272;
