@@ -119,6 +119,27 @@ Page({
                     url: '../resultPage/analysisPage?formId=' + that.data.formId,
                   })
                 }
+                else {
+                  wx.request({
+                    url: that.data.getFormUrl + "('" + that.data.formId + "')?$expand=Questions($expand=Choices($expand=Shop))",
+                    method: 'GET',
+                    success(res) {
+                      console.log(res.data)
+                      if (res.data.Questions.length > 0) {
+                        let newOptions = res.data.Questions[0].Choices.map((item) => {
+                          item.Shop.Distance = (item.Shop.Distance / 1000.0).toFixed(1)
+                          return { click: false, Choices: item, itemHeight: that.data.itemHeight }
+                        })
+                        that.setData({
+                          Options: newOptions,
+                          Title: res.data.Questions[0].Description,
+                          LoadingData: "1",
+                        })
+                      }
+
+                    }
+                  })
+                }
               }
             })
           },
@@ -126,25 +147,6 @@ Page({
       },
     })
     
-    wx.request({
-      url: this.data.getFormUrl + "('"+this.data.formId+"')?$expand=Questions($expand=Choices($expand=Shop))",
-      method: 'GET',
-      success(res) {
-        console.log(res.data)
-        if(res.data.Questions.length > 0) {
-          let newOptions = res.data.Questions[0].Choices.map((item) => {
-            item.Shop.Distance = (item.Shop.Distance/1000.0).toFixed(1)
-            return {click: false, Choices: item, itemHeight: that.data.itemHeight}
-          })
-          that.setData({
-            Options: newOptions,
-            Title: res.data.Questions[0].Description,
-            LoadingData: "1",
-          })
-        }
-        
-      }
-    })
   },
 
   /**
