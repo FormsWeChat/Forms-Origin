@@ -219,30 +219,31 @@ namespace FormsForWeChat.Controllers
 
             TableQuery<TableEntityAdapter<Response>> queryResponses = new TableQuery<TableEntityAdapter<Response>>().Where(TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, formId));
             var responses = ResponseTable.ExecuteQuery(queryResponses)?.Select(result => result.OriginalEntity);
-            if (responses != null && responses.Count() != 0)
+
+            TableQuery<TableEntityAdapter<Choice>> queryChoices = new TableQuery<TableEntityAdapter<Choice>>().Where(TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, formId));
+            var choices = ChoiceTable.ExecuteQuery(queryChoices).Select(result => result.OriginalEntity);
+            if (choices != null && choices.Count() != 0)
             {
-                foreach(var group in responses.GroupBy(response => response.ChoiceId))
+                foreach(var choice in choices)
                 {
-                    TableOperation choiceRetrieveOperation = TableOperation.Retrieve<TableEntityAdapter<Choice>>(formId, group.Key);
-                    var choice = ((TableEntityAdapter<Choice>)ChoiceTable.Execute(choiceRetrieveOperation).Result)?.OriginalEntity;
-                    if (choice != null)
+                    TableOperation shopRetrieveOperation = TableOperation.Retrieve<TableEntityAdapter<Shop>>("zgc", choice.ShopId);
+                    var shop = ((TableEntityAdapter<Shop>)ShopTable.Execute(shopRetrieveOperation).Result)?.OriginalEntity;
+                    var newItem = new ResponseSummaryItem()
                     {
-                        TableOperation shopRetrieveOperation = TableOperation.Retrieve<TableEntityAdapter<Shop>>("zgc", choice.ShopId);
-                        var shop = ((TableEntityAdapter<Shop>)ShopTable.Execute(shopRetrieveOperation).Result)?.OriginalEntity;
-                        var newItem = new ResponseSummaryItem()
-                        {
-                            ShopTitle = shop?.ShopTitle,
-                            Count = group.Count(),
-                            ResponderAvatarUrls = new List<string>()
-                        };
-                        foreach(var response in group)
-                        {
-                            TableOperation userRetrieveOperation = TableOperation.Retrieve<TableEntityAdapter<User>>("User", response.ResponderId);
-                            var user = ((TableEntityAdapter<User>)UserTable.Execute(userRetrieveOperation).Result)?.OriginalEntity;
-                            newItem.ResponderAvatarUrls.Add(user?.AvatarUrl ?? string.Empty);
-                        }
-                        summary.Items.Add(newItem);
+                        ShopTitle = shop?.ShopTitle,
+                        Count = 0,
+                        ResponderAvatarUrls = new List<string>()
+                    };
+
+                    var choiceResponses = responses.Where(res => res.ChoiceId == choice.Id);
+                    newItem.Count = choiceResponses.Count();
+                    foreach(var response in choiceResponses)
+                    {
+                        TableOperation userRetrieveOperation = TableOperation.Retrieve<TableEntityAdapter<User>>("User", response.ResponderId);
+                        var user = ((TableEntityAdapter<User>)UserTable.Execute(userRetrieveOperation).Result)?.OriginalEntity;
+                        newItem.ResponderAvatarUrls.Add(user?.AvatarUrl ?? string.Empty);
                     }
+                    summary.Items.Add(newItem);
                 }
                 summary.WinnerTitle = summary.Items.Count() != 0 ? summary.Items.OrderByDescending(item=>item.Count).First()?.ShopTitle : string.Empty;
                 summary.Total = summary.Items.Count() != 0 ? summary.Items.Sum(item => item.Count) : 0;
