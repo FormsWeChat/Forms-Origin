@@ -25,6 +25,10 @@ Page({
        },
  
        success: function(res) {
+         let orderedItems = res.data.Items.sort((a,b) => {
+           return b.Count - a.Count;
+         })
+         res.data.Items = orderedItems
          console.log( res.data )
          that.setData( {
            vote: res.data,
